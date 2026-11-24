@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you reference this PRISM-118 design study or prototype archive, please cite RMvdesi and this repository using the metadata below."
+title: "PRISM-118 · Periodic Console — Design Study & WebGL2 Prototype Archive"
+type: software
+authors:
+  - name: "RMvdesi"
+    website: "https://github.com/RMvdesi"
+version: "1.0.0"
+date-released: "2026-11-24"
+url: "https://github.com/RMvdesi/prism-periodic-console"
+repository-code: "https://github.com/RMvdesi/prism-periodic-console"
+license-url: "https://github.com/RMvdesi/prism-periodic-console/blob/main/LICENSE"
+keywords:
+  - "design-study"
+  - "industrial-design"
+  - "optical-design"
+  - "webgl2"
+  - "pbr-shaders"
+  - "periodic-table"
+  - "web-audio-synthesis"
+  - "obsidian-prism"
+references:
+  - type: software
+    title: "Obsidian Prism"
+    authors:
+      - name: "RMvdesi"
+        website: "https://github.com/RMvdesi"
+    url: "https://github.com/RMvdesi/obsidian-prism"
+    repository-code: "https://github.com/RMvdesi/obsidian-prism"

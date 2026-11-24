@@ -1,0 +1,98 @@
+PRISM-118 · Periodic Console
+Proprietary Design Study & Prototype Archive License
+================================================================================
+
+Copyright (c) 2026 RMvdesi (https://github.com/RMvdesi)
+Associated Project: Obsidian Prism (https://github.com/RMvdesi/obsidian-prism)
+All Rights Reserved.
+
+1. SCOPE & PURPOSE OF THIS REPOSITORY
+-------------------------------------
+This repository ("PRISM-118 · Periodic Console") is published strictly as a
+publicly viewable Design Study & Interactive Prototype Archive to document
+original visual design authorship and allow personal browser preview of the
+design concept. This repository is NOT open-source software and grants no
+open-source license (such as MIT, Apache, or GPL).
+
+2. PERMITTED PERSONAL VIEWING & ATTRIBUTED REFERENCE
+----------------------------------------------------
+Subject to strict compliance with Section 3, RMvdesi grants visitors a limited,
+revocable, non-exclusive, non-transferable, royalty-free personal permission to:
+
+  (a) View, read, and inspect the design notes, renders, shaders, and prototype
+      source code online for personal viewing and technical study;
+  (b) Open and interact with the live design preview in a personal web browser
+      (via GitHub Pages, local personal HTTP server, or offline file://); and
+  (c) Capture and share unaltered screenshots, screen recordings, or brief
+      illustrative excerpts for non-commercial editorial reviews, design
+      critiques, or academic citation, PROVIDED THAT clear attribution is given
+      to RMvdesi and this repository
+      (https://github.com/RMvdesi/prism-periodic-console).
+
+3. STRICT PROHIBITIONS (ALL RIGHTS RESERVED)
+--------------------------------------------
+Except as expressly permitted in Section 2 (and excluding the third-party open-
+source font files listed in Section 5), NO license or right is granted — whether
+express, implied, or by estoppel — under any copyright, trade dress, industrial
+design, or other intellectual property right. Without prior written permission
+from RMvdesi, you MAY NOT:
+
+  (a) Copy, reproduce, republish, mirror, or redistribute the source code,
+      GLSL shaders, baked dual-mode optical/mineral screen plates, PBR grain
+      assets, acoustic synthesis graphs, concept studies, or renders in whole
+      or in part;
+  (b) Clone, port, adapt, translate, or incorporate the PRISM-118 console
+      visual design, 118-element + AUX-06 triptych layout, dual-mode screen
+      plates, sea-glass/ice-jade keycap shaders, or interaction mechanics into
+      any third-party software, plugin, browser extension, theme pack, web
+      application, or hardware/software product;
+  (c) Use any original portion of this repository for commercial purposes, paid
+      products, monetized services, or AI training/dataset ingestion; or
+  (d) Remove, obscure, or alter any copyright header, license notice, or
+      attribution metadata.
+
+4. INDEPENDENT LICENSE BOUNDARY WITH OBSIDIAN PRISM
+---------------------------------------------------
+PRISM-118 was designed by RMvdesi as a concept interface associated with
+Obsidian Prism (https://github.com/RMvdesi/obsidian-prism). This standalone
+design archive repository is governed exclusively by the All Rights Reserved
+terms above and is NOT licensed under GPL-3.0 or any other open-source license
+applicable to separate repositories. Any future licensing of portions of this
+work by the copyright holder in another repository applies solely within that
+separate repository's explicit terms.
+
+5. THIRD-PARTY OPEN-SOURCE FONTS (SIL OFL 1.1)
+----------------------------------------------
+The bundled font files located under `assets/fonts/instrument-serif-*.woff2`
+are third-party open-source Font Software:
+
+  Copyright 2022 The Instrument Serif Project Authors
+  (https://github.com/Instrument/instrument-serif)
+
+These font files are EXCLUDED from the All Rights Reserved restrictions above
+and remain governed solely by the SIL Open Font License, Version 1.1, whose
+full text is preserved at `assets/fonts/OFL-INSTRUMENT-SERIF.txt`.
+
+6. DISCLAIMER OF WARRANTY
+-------------------------
+THIS DESIGN ARCHIVE AND PROTOTYPE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+================================================================================
+中文权利摘要（仅供参考，法律效力以英文条款为准）
+================================================================================
+版权所有 (c) 2026 RMvdesi · 保留所有权利（All Rights Reserved）。
+本仓库仅作为「PRISM-118 交互与光学设计稿档案」公开展示（关联项目：Obsidian Prism），
+不构成开源软件许可（不适用 MIT / Apache / GPL 等开源协议）。
+
+【允许事项】允许在线浏览本仓库设计稿、笔记与原型代码，在个人浏览器中通过网页或本地
+file:// 打开体验实时原型，并在保留原作者 RMvdesi 与本仓库链接的前提下进行非商业性
+截图、录屏评述或学术引用。
+【严禁事项】除上述明确允许范围及第 5 条第三方开源字体外，未经 RMvdesi 事先书面授权，
+严禁复制、再分发、商业化使用、AI 数据集训练抓取，或将本设计稿的造型结构、WebGL2 PBR
+着色器、18 张暗/明双模光学底版、声学合成实现及交互方案衍生克隆或移植至任何第三方软
+件、插件、主题包或产品，严禁抹除或篡改版权及归属声明。
+【第三方字体声明】`assets/fonts/instrument-serif-*.woff2` 归属 The Instrument Serif
+Project Authors，独立适用 SIL Open Font License 1.1（详见 `assets/fonts/OFL-INSTRUMENT-SERIF.txt`），
+不受本仓库 All Rights Reserved 专有条款限制。

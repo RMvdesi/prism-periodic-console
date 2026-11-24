@@ -1,0 +1,34 @@
+{
+  "name": "prism-periodic-console",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PRISM-118 · Periodic Console design study archive and interactive WebGL2 prototype (All Rights Reserved).",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "RMvdesi",
+    "url": "https://github.com/RMvdesi"
+  },
+  "homepage": "https://rmvdesi.github.io/prism-periodic-console/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RMvdesi/prism-periodic-console.git"
+  },
+  "main": "src/periodic-console.js",
+  "files": [
+    "index.html",
+    "LICENSE",
+    "CITATION.cff",
+    "README.md",
+    "README.zh-CN.md",
+    "src/",
+    "showcase/",
+    "assets/",
+    "docs/"
+  ],
+  "scripts": {
+    "test": "node --test test/periodic-console.test.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
