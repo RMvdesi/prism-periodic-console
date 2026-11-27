@@ -92,14 +92,14 @@
 ### 3.2 严格 `5 / 10 / 4 / 5 / 1` WebGL2 资源封顶预算
 
 整套 3D 渲染器零外部依赖，严格锁死以下 GPU 资源上限并通过自动化单测逐项断言：
-- **`5` 个 WebGLProgram / `10` 个 WebGLShader**：机身金属与收腰槽（`progChassis`）、实例化半透海玻璃/PBT 键帽（`progKeycap`）、防溢光曲面玻璃 OLED（`progOled`）、磁悬浮全息微晶与滚花配件（`progSolid`）、以及实时正交深度阴影（`progShadow`）；
+- **`5` 个 WebGLProgram / `10` 个 WebGLShader**（共享 `FrameGlobals` UBO 统一帧参数块）：机身金属与收腰槽（`progChassis`）、实例化半透海玻璃/PBT 键帽（`progKeycap`）、防溢光曲面玻璃 OLED（`progOled`）、磁悬浮全息微晶与滚花配件（`progSolid`）、以及实时正交深度阴影（`progShadow`）；
 - **`4` 个 VAO**：高精圆角倒角键帽实例网格、CNC 阶梯双外设机身网格、轴座/微晶几何池、曲面屏网格；
-- **`5` 张显存纹理 + `1` 个 `2048×2048` 阴影 FBO**：
+- **`5` 张显存纹理 + `1` 个 `1024 / 512px` 动态阴影 FBO**（支持 `Balanced · 300Hz / 1024px` 与 `Eco · 60fps / 512px` 切换，配 `66ms` 拖拽阴影节流、Vogel 查表软阴影与 FNV-1a 阴影签名跳过）：
   1. `128×128 RG8` 双通道程序化 PBT 咬花与阳极铝喷砂法线颗粒图；
-  2. `128×64 RGB8` 摄影棚柔光箱各向异性金属环境反射图（`24,576 B`）；
-  3. 键帽高精度矢量抗锯齿字符图集；
+  2. `64×32 RGB8` 零三角函数摄影棚柔光箱各向异性金属环境反射图（`6,144 B`）；
+  3. `Path2D` 缓存键帽高精度矢量抗锯齿字符图集（闲置自动 `evictLegendAtlasCache()`）；
   4. `1600×480` 实时合成双模光学屏幕纹理；
-  5. `2048×2048` 实时软阴影深度贴图。
+  5. `1024×1024`（Eco 模式 `512×512`）实时软阴影深度贴图。
 
 ---
 
@@ -143,14 +143,14 @@
 
 - **冷启动 `0` 解码**：未呼出底坞时，`0` WebGL 上下文、`0` 壁纸解码、`0` PBR 噪点解码、`0` `AudioContext`；
 - **`120ms` 静默预热**：按住触发钮达 `120ms` 时提前解码当前模型底版与 PBR 颗粒，避免展开首帧闪烁；
-- **静止即 `0fps`**：所有动效与阻尼弹簧在 `< 180` 帧内收敛并停止 `requestAnimationFrame`；
-- **`90s` 缓存回收**：底坞收起（或取消长按）静置满 `90s`，自动清空已解码底版池与 `88 KB` PBR `TypedArray` 缓存，并挂起 `AudioContext`。
+- **`300Hz` 瞬态解锁与静止 `0fps`**：零 GC `Float64Array` 精确二阶弹簧在瞬态交互时原生满刷高刷，稳态零重力浮动回落 `60fps`（或手动切换 `Eco 60fps`），所有动效在 `< 180` 帧内收敛并完全停止 `requestAnimationFrame`；
+- **`90s` 全链路缓存回收与零回流热路径**：底坞收起静置满 `90s`，自动清空已解码底版池、PBR `TypedArray` 缓存与 `Path2D` 字符图集缓存并挂起 `AudioContext`；结合 Read-then-Write `open()`、`rCache`/`bCache`/`rimP` 节流与 `ResizeObserver` rAF 合批，保持热路径 `0` 同步回流。
 
 ---
 
 ## 7. 原型挂载结构与归属说明
 
-本仓库 `src/` 目录下的四份原生脚本（`pbr-grain-assets.js`、`oled-cyber-screen.js`、`keyboard-3d-gl.js`、`periodic-console.js`）仅用于驱动设计稿实时预览（`PrismPeriodicConsole.mount(options)`），无外部 3D 库依赖。
+本仓库 `src/` 目录下的七份解耦原生脚本（`pbr-grain-assets.js`、`audio-fx.js`、`model-catalog.js`、`oled-cyber-screen.js`、`keyboard-3d-gl.js`、`bento-ui.js`、`periodic-console.js`）驱动设计稿实时预览（`PrismPeriodicConsole.mount(options)` 与 `setPerformanceMode('balanced' | 'performance')`），无外部 3D 库依赖。
 
 **归属与许可**：  
 本仓库 `PRISM-118 · Periodic Console` 设计稿由 RMvdesi 创作，关联 Obsidian Prism 概念方案（`© 2026 RMvdesi · All Rights Reserved`）。允许在线阅览、本地体验与保留出处的评述引用；未经授权不得复制、再分发、商用或衍生移植。详见根目录 [LICENSE](../LICENSE)。

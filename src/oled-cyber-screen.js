@@ -1,36 +1,7 @@
 /*!
- * PRISM-118 · Periodic Console — Original Industrial & Optical Design Monograph
+ * PRISM-118 · Periodic Console — 1600x480 Dual-Mode Optical Glass Display Painter
  * Copyright (c) 2026 RMvdesi (https://github.com/RMvdesi). All Rights Reserved.
- *
- * Flagship Product Attribution:
- *   Obsidian Prism (https://github.com/RMvdesi/obsidian-prism)
- *
- * PROPRIETARY DESIGN & SOURCE NOTICE:
- * Published solely for public online interactive exhibition, technical craft
- * inspection, and authorship attribution. Unauthorized copying, redistribution,
- * commercial use, derivative porting/cloning, or removal of attribution is
- * strictly prohibited. See LICENSE in the repository root for full terms.
- */
-/**
- * Obsidian Prism — V14 Google DeepMind Official Spectrum · Full-Bleed Dark & Light Key Art Display (1600x480)
- *
- * V14 核心光学架构（对标 Google 官方模型发布视觉 · 静态主视觉优先 · 克制微动效辅助）：
- *   1. 1600x480 满幅贯通式 Google DeepMind 官方海报横幅（0 简陋代码多面体、0 中间劈半竖线）：
- *      - 左至中区（~42%）：满幅高精烘焙折光光学玻璃雕塑（1H 天青球环 / 6C 官方皇家钴蓝虹彩水晶簇 /
- *        10Ne 珊瑚红橙→暖金莫比乌斯玻璃环 / 18Ar 电光靛紫同心光学透镜 / Claude 陶土暖珀拱门 /
- *        Flash 电光青双棱羽翼 / GPT 银青冰晶六角结 / Orch 星云紫金陀螺双环）+ 半透明大号元素符号水印，
- *        无缝向右流淌过渡至纯净社论排版留白区。
- *   2. 真·暗夜（Dark）与白昼（Light）双套独立海报底图适配：
- *      - 暗色主题（obsidian-dark / warm-dark）：深邃星云天鹅绒夜底 + 自发光折光玻璃雕塑 + 纯白锐字 + 烟熏毛玻璃胶囊；
- *      - 浅色主题（crystal-light / alabaster-light）：明亮白昼瓷白冰雾渐变底 + 日光通透彩色玻璃雕塑 + 深炭墨高对比锐字 + 白冰毛玻璃胶囊（彻底消灭浅色黑砖屏！）。
- *   3. 静态艺术为主，微动效仅作克制点睛（严格 0fps 静止休眠）：
- *      - 静止态 100% 零耗电（isAnimating() === false）；
- *      - 仅在切模型/切深浅主题（200ms 柔滑叠化 + 微妙水平视差滑移）、切档位（220ms 毛玻璃胶囊阻尼滑移 + ~8% 柔光微涌）、
- *        以及指针掠过/旋转视角（斜向清透玻璃镜面掠光）时响应，随后立即回归 0fps。
- *
- * Contract:
- *   globalThis.PrismPeriodicOledScreen = { createOledScreenPainter }
- *   module.exports = { createOledScreenPainter }
+ * Original Design for Obsidian Prism (https://github.com/RMvdesi/obsidian-prism)
  */
 (function (root, factory) {
   var api = factory(root);
@@ -59,7 +30,7 @@
     var ANIM_STALE_GUARD_MS = 650;
     var MAX_WALLPAPER_CACHE = 24;
 
-    /* 满幅海报构图视觉锚点：左移玻璃雕塑视口 (-46px / 浅色10Ne -64px) + 雕塑右翼纯净分离大水印 (~x:500..664) + 右侧社论排版区 (x:682..1548) */
+    /* 满幅海报构图锚点 */
     var SCULPT_SHIFT_X = -46;
     var SCULPT_SHIFT_LIGHT_NEON = -64;
     var SCULPT_AURA_CX = 236;
@@ -74,7 +45,7 @@
     var RIGHT_ZONE_END = 1548;
     var RIGHT_ZONE_W = RIGHT_ZONE_END - RIGHT_ZONE_X; /* 866 */
 
-    /* 思考档位毛玻璃胶囊严格锁定在 [682, 1504] x [296, 388]，100% 保持 getEffortUvRects() 零死区热区几何契约 */
+    /* 思考档位胶囊热区 */
     var WELL_X = 682;
     var WELL_RIGHT = 1504;
     var WELL_W = WELL_RIGHT - WELL_X; /* 822 */
@@ -293,7 +264,7 @@
       },
     };
 
-    /* V14.1 114 颗未解锁盲键与预留槽专属「未雕琢哑光原石晶坯」中性石板光谱（零盗用 6C 蓝晶！） */
+    /* V14.1 盲键中性光谱 */
     var STANDBY_OPTIC_THEME = {
       sculptKey: 'standby',
       watermark: 'Au',
@@ -343,7 +314,106 @@
 
     var ORCH_VIOLET_HEX = '#8B5CF6';
     var ORCH_GOLD_HEX = '#F5B942';
-    var ORCH_NON_PLANNER_LABEL = 'NON-PLANNER · 编排态不可选';
+    var ORCH_NON_PLANNER_LABEL_ZH = 'NON-PLANNER · 编排态不可选';
+    var ORCH_NON_PLANNER_LABEL_EN = 'NON-PLANNER · LOCKED IN ORCH';
+    var SYNC_BADGE_DEFAULT_ZH = '已同步会话';
+    var SYNC_BADGE_DEFAULT_EN = 'SYNCED';
+    var SYNC_BADGE_DEFAULT_DURATION_MS = 1200;
+
+    var OLED_I18N = {
+      'zh-CN': { nonPlanner: ORCH_NON_PLANNER_LABEL_ZH, standbyAux: 'STANDBY · 未开放副盘槽位', synced: SYNC_BADGE_DEFAULT_ZH },
+      'zh-TW': { nonPlanner: 'NON-PLANNER · 編排態不可選', standbyAux: 'STANDBY · 未開放副盤槽位', synced: '已同步工作階段' },
+      en: { nonPlanner: ORCH_NON_PLANNER_LABEL_EN, standbyAux: 'STANDBY · RESERVED MACRO SLOT', synced: SYNC_BADGE_DEFAULT_EN },
+      ja: { nonPlanner: 'NON-PLANNER · オーケストラ固定', standbyAux: 'STANDBY · 予約済みマクロ枠', synced: '同期済' },
+      ko: { nonPlanner: 'NON-PLANNER · 오케스트레이션 잠금', standbyAux: 'STANDBY · 예약된 매크로 슬롯', synced: '동기화됨' },
+      es: { nonPlanner: 'NON-PLANNER · BLOQUEADO EN ORCH', standbyAux: 'STANDBY · RANURA RESERVADA', synced: 'SINCRONIZADO' },
+      fr: { nonPlanner: 'NON-PLANNER · VERROUILLÉ ORCH', standbyAux: 'STANDBY · EMPLACEMENT RÉSERVÉ', synced: 'SYNCHRONISÉ' },
+      de:{nonPlanner:'NON-PLANNER · IN ORCH GESPERRT',standbyAux:'STANDBY · RESERVIERTER SLOT',synced:'SYNCHRONISIERT'},
+      tr:{nonPlanner:'NON-PLANNER · ORCH KİLİTLİ',standbyAux:'STANDBY · AYRILMIŞ YUVA',synced:'EŞİTLENDİ'},
+    };
+    function normalizeOledLang(raw) {
+      var s = String(raw || '').trim().toLowerCase().replace(/_/g, '-');
+      if (!s || s === 'auto') return '';
+      if (s === 'yue' || s.indexOf('yue-') === 0 || s === 'zh-yue' || s.indexOf('cantonese') !== -1) return 'zh-CN';
+      if (/^zh-(tw|hant|hk|mo)/.test(s) || s === 'tw' || s === 'hant') return 'zh-TW';
+      if (/^zh(?:$|-)/.test(s)) return 'zh-CN';
+      if (/^(ja|jp)(?:$|-)/.test(s) || s === 'japanese') return 'ja';
+      if (/^(ko|kr)(?:$|-)/.test(s) || s === 'korean') return 'ko';
+      if (/^es(?:$|-)/.test(s) || s === 'spanish') return 'es';
+      if (/^fr(?:$|-)/.test(s) || s === 'french') return 'fr';
+      if (/^de(?:$|-)/.test(s) || s === 'german') return 'de';
+      if (/^tr(?:$|-)/.test(s) || s === 'turkish' || s === 'türkçe') return 'tr';
+      if (/^en(?:$|-)/.test(s) || s === 'english') return 'en';
+      return '';
+    }
+
+    function normalizeOledTargetFps(raw) {
+      if (raw === null || raw === undefined || raw === '') return 'native';
+      var s = String(raw).trim().toLowerCase();
+      if (s === '60' || s === '120' || s === '180' || s === 'native') return s;
+      return 'native';
+    }
+
+    function resolveOledMinFrameGapMs(fpsKey) {
+      if (fpsKey === '60') return 15.5;
+      if (fpsKey === '120') return 7.6;
+      if (fpsKey === '180') return 4.9;
+      return 0;
+    }
+
+    function normalizeOledMotionLevel(raw) {
+      if (raw === null || raw === undefined || raw === '') return null;
+      var s = String(raw).trim().toLowerCase();
+      if (s === 'ultra' || s === 'medium' || s === 'low' || s === 'subtle' || s === 'off') return s;
+      if (s === 'standard') return 'medium';
+      return null;
+    }
+
+    var _oledRmMqlCache = typeof WeakMap === 'function' ? new WeakMap() : null;
+    function checkOledPrefersReducedMotion(rt) {
+      try {
+        var host = (rt && typeof rt === 'object') ? rt : (typeof window !== 'undefined' && window ? window : null);
+        var d = (host && host.document) || (typeof document !== 'undefined' ? document : null), de = d && d.documentElement;
+        if (de && de.getAttribute && de.getAttribute('data-prism-motion') === 'off') return true;
+        if (de && de.getAttribute && de.getAttribute('data-prism-ignore-rm') === '1') return false;
+        if (!host || typeof host.matchMedia !== 'function') return false;
+        var mm = host.matchMedia, c = _oledRmMqlCache && _oledRmMqlCache.get(host);
+        if (c && c.fn === mm && c.mq) return Boolean(c.mq.matches);
+        var mq = mm.call(host, '(prefers-reduced-motion: reduce)');
+        if (_oledRmMqlCache) _oledRmMqlCache.set(host, { fn: mm, mq: mq });
+        return Boolean(mq && mq.matches);
+      } catch (_e) {}
+      return false;
+    }
+
+    function resolveOledLocale(explicitLang, explicitZh, info, tp, bs, doc, rt) {
+      var cands = [
+        bs && bs.lang,
+        info && info.lang,
+        tp && tp.lang,
+        explicitLang,
+      ];
+      for (var i = 0; i < cands.length; i += 1) {
+        var n = normalizeOledLang(cands[i]);
+        if (n) return n;
+      }
+      try {
+        var de = doc && doc.documentElement;
+        if (de && typeof de.getAttribute === 'function') {
+          var docLang = normalizeOledLang(de.getAttribute('data-prism-lang') || de.getAttribute('lang'));
+          if (docLang) return docLang;
+        }
+      } catch (_langErr) {}
+      if (bs && typeof bs.zh === 'boolean') return bs.zh ? 'zh-CN' : 'en';
+      if (info && typeof info.zh === 'boolean') return info.zh ? 'zh-CN' : 'en';
+      if (tp && typeof tp.zh === 'boolean') return tp.zh ? 'zh-CN' : 'en';
+      if (typeof explicitZh === 'boolean') return explicitZh ? 'zh-CN' : 'en';
+      try {
+        var navLang = normalizeOledLang(rt && rt.navigator && rt.navigator.language);
+        if (navLang) return navLang;
+      } catch (_navErr) {}
+      return 'en';
+    }
 
     /* ============================================================================
      * 1. 基础数学、弹簧曲线与色彩工具
@@ -777,125 +847,49 @@
     }
 
     function drawRoundRectPath(ctx, x, y, w, h, r) {
-      var rw = Math.max(0, w);
-      var rh = Math.max(0, h);
-      var rr = Math.max(0, Math.min(r, rw * 0.5, rh * 0.5));
-      ctx.beginPath();
-      ctx.moveTo(x + rr, y);
-      ctx.arcTo(x + rw, y, x + rw, y + rh, rr);
-      ctx.arcTo(x + rw, y + rh, x, y + rh, rr);
-      ctx.arcTo(x, y + rh, x, y, rr);
-      ctx.arcTo(x, y, x + rw, y, rr);
-      ctx.closePath();
+      var rw = Math.max(0, w), rh = Math.max(0, h), rr = Math.max(0, Math.min(r, rw * 0.5, rh * 0.5));
+      ctx.beginPath(); ctx.moveTo(x + rr, y); ctx.arcTo(x + rw, y, x + rw, y + rh, rr); ctx.arcTo(x + rw, y + rh, x, y + rh, rr); ctx.arcTo(x, y + rh, x, y, rr); ctx.arcTo(x, y, x + rw, y, rr); ctx.closePath();
     }
-
     function drawEllipseArcSafe(ctx, cx, cy, rx, ry, rot, a0, a1, ccw) {
-      var safeRx = Math.max(0.5, rx);
-      var safeRy = Math.max(0.5, ry);
-      if (typeof ctx.ellipse === 'function') {
-        ctx.ellipse(cx, cy, safeRx, safeRy, rot || 0, a0, a1, Boolean(ccw));
-        return;
-      }
-      ctx.save();
-      ctx.translate(cx, cy);
-      if (rot) ctx.rotate(rot);
-      ctx.scale(safeRx, safeRy);
-      ctx.arc(0, 0, 1, a0, a1, Boolean(ccw));
-      ctx.restore();
+      var sx = Math.max(0.5, rx), sy = Math.max(0.5, ry);
+      if (typeof ctx.ellipse === 'function') { ctx.ellipse(cx, cy, sx, sy, rot || 0, a0, a1, Boolean(ccw)); return; }
+      ctx.save(); ctx.translate(cx, cy); if (rot) ctx.rotate(rot); ctx.scale(sx, sy); ctx.arc(0, 0, 1, a0, a1, Boolean(ccw)); ctx.restore();
     }
-
-    function setCompositeSafe(ctx, mode) {
-      if (!ctx) return;
-      try {
-        ctx.globalCompositeOperation = mode;
-      } catch (_e) {}
-    }
-
-    function measureTextSafe(ctx, str) {
-      var text = String(str || '');
-      if (!ctx || typeof ctx.measureText !== 'function') {
-        return text.length * 14;
-      }
-      var m = ctx.measureText(text);
-      return m && typeof m.width === 'number' ? m.width : text.length * 14;
-    }
-
+    function setCompositeSafe(ctx, mode) { if (ctx) try { ctx.globalCompositeOperation = mode; } catch (_e) {} }
+    var _tc = new Map(), _tf = null;
+    function _tg(c, k) { var f = c && c.measureText; if (f !== _tf) { _tc.clear(); _tf = f; return; } if (!_tc.has(k)) return; var v = _tc.get(k); _tc.delete(k); _tc.set(k, v); return v; }
+    function _ts(k, v) { if (_tc.size >= 16) _tc.delete(_tc.keys().next().value); _tc.set(k, v); return v; }
+    function measureTextSafe(ctx, str) { var t = String(str || ''); if (!ctx || typeof ctx.measureText !== 'function') return t.length * 14; var m = ctx.measureText(t); return m && typeof m.width === 'number' ? m.width : t.length * 14; }
     function truncateText(ctx, text, maxW) {
-      var str = String(text || '');
-      if (!str || maxW <= 0) return '';
-      if (measureTextSafe(ctx, str) <= maxW) return str;
-      var lo = 0;
-      var hi = str.length;
-      while (lo < hi) {
-        var mid = Math.ceil((lo + hi) * 0.5);
-        if (measureTextSafe(ctx, str.slice(0, mid) + '…') <= maxW) {
-          lo = mid;
-        } else {
-          hi = mid - 1;
-        }
-      }
-      return str.slice(0, Math.max(1, lo)) + '…';
+      var s = String(text || ''); if (!s || maxW <= 0) return '';
+      var k = 'T|' + (ctx && ctx.font || '') + '|' + Math.round(maxW) + '|' + s, h = _tg(ctx, k);
+      if (h !== undefined) return h;
+      if (measureTextSafe(ctx, s) <= maxW) return _ts(k, s);
+      var lo = 0, hi = s.length;
+      while (lo < hi) { var mid = Math.ceil((lo + hi) * 0.5); if (measureTextSafe(ctx, s.slice(0, mid) + '…') <= maxW) lo = mid; else hi = mid - 1; }
+      return _ts(k, s.slice(0, Math.max(1, lo)) + '…');
     }
-
     function fitSingleLineFontSize(ctx, text, weight, family, maxPx, minPx, maxWidth) {
-      var px = maxPx;
-      var step = 2;
-      while (px > minPx) {
-        ctx.font = weight + ' ' + px + 'px ' + family;
-        if (measureTextSafe(ctx, text) <= maxWidth) {
-          return px;
-        }
-        px = Math.max(minPx, px - step);
-      }
-      ctx.font = weight + ' ' + minPx + 'px ' + family;
-      return minPx;
+      var k = 'F|' + weight + '|' + family + '|' + maxPx + '|' + minPx + '|' + Math.round(maxWidth) + '|' + text, h = _tg(ctx, k);
+      if (h !== undefined) { ctx.font = weight + ' ' + h + 'px ' + family; return h; }
+      for (var px = maxPx; px > minPx; px = Math.max(minPx, px - 2)) { ctx.font = weight + ' ' + px + 'px ' + family; if (measureTextSafe(ctx, text) <= maxWidth) return _ts(k, px); }
+      ctx.font = weight + ' ' + minPx + 'px ' + family; return _ts(k, minPx);
     }
-
-    function makeLinearGrad(ctx, x0, y0, x1, y1, stops, fallbackCss) {
-      if (!ctx || typeof ctx.createLinearGradient !== 'function') {
-        return fallbackCss || '#000000';
-      }
-      var g = ctx.createLinearGradient(x0, y0, x1, y1);
-      if (!g || typeof g.addColorStop !== 'function') return fallbackCss || '#000000';
-      for (var i = 0; i < stops.length; i++) {
-        g.addColorStop(clamp(stops[i][0], 0, 1), stops[i][1]);
-      }
+    function makeLinearGrad(ctx, x0, y0, x1, y1, stops, fb) {
+      if (!ctx || typeof ctx.createLinearGradient !== 'function') return fb || '#000000';
+      var g = ctx.createLinearGradient(x0, y0, x1, y1); if (!g || typeof g.addColorStop !== 'function') return fb || '#000000';
+      for (var i = 0; i < stops.length; i++) g.addColorStop(clamp(stops[i][0], 0, 1), stops[i][1]);
       return g;
     }
-
-    function makeRadialGrad(ctx, x0, y0, r0, x1, y1, r1, stops, fallbackCss) {
-      if (!ctx || typeof ctx.createRadialGradient !== 'function') {
-        return fallbackCss || 'rgba(0,0,0,0)';
-      }
-      var g = ctx.createRadialGradient(x0, y0, Math.max(0, r0), x1, y1, Math.max(0.1, r1));
-      if (!g || typeof g.addColorStop !== 'function') return fallbackCss || 'rgba(0,0,0,0)';
-      for (var i = 0; i < stops.length; i++) {
-        g.addColorStop(clamp(stops[i][0], 0, 1), stops[i][1]);
-      }
+    function makeRadialGrad(ctx, x0, y0, r0, x1, y1, r1, stops, fb) {
+      if (!ctx || typeof ctx.createRadialGradient !== 'function') return fb || 'rgba(0,0,0,0)';
+      var g = ctx.createRadialGradient(x0, y0, Math.max(0, r0), x1, y1, Math.max(0.1, r1)); if (!g || typeof g.addColorStop !== 'function') return fb || 'rgba(0,0,0,0)';
+      for (var i = 0; i < stops.length; i++) g.addColorStop(clamp(stops[i][0], 0, 1), stops[i][1]);
       return g;
     }
-
-    function setShadow(ctx, color, blur, ox, oy) {
-      ctx.shadowColor = color;
-      ctx.shadowBlur = blur || 0;
-      ctx.shadowOffsetX = ox || 0;
-      ctx.shadowOffsetY = oy || 0;
-    }
-
-    function clearShadow(ctx) {
-      ctx.shadowColor = 'rgba(0,0,0,0)';
-      ctx.shadowBlur = 0;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 0;
-    }
-
-    function setLetterSpacingSafe(ctx, spacingCss) {
-      if (ctx && 'letterSpacing' in ctx) {
-        try {
-          ctx.letterSpacing = spacingCss;
-        } catch (_e) {}
-      }
-    }
+    function setShadow(ctx, col, blur, ox, oy) { ctx.shadowColor = col; ctx.shadowBlur = blur || 0; ctx.shadowOffsetX = ox || 0; ctx.shadowOffsetY = oy || 0; }
+    function clearShadow(ctx) { ctx.shadowColor = 'rgba(0,0,0,0)'; ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0; }
+    function setLetterSpacingSafe(ctx, sp) { if (ctx && 'letterSpacing' in ctx) try { ctx.letterSpacing = sp; } catch (_e) {} }
 
     function resolveGrainAssetsPackage(runtimeRoot) {
       return (
@@ -1172,7 +1166,7 @@
     /* ============================================================================
      * 5. 满幅深浅官方海报背景绘制器（支持 200ms 叠化 + 微妙视差平移 + ~8% 切档辉度微涌 + V14.1 原石晶坯 & 重度冰封雾化）
      * ============================================================================ */
-    function buildFrostedDownsampleCanvas(doc, wpEntry, isLight) {
+    function buildFrostedDownsampleCanvas(doc, wpEntry, isLight, isMono) {
       if (!doc || typeof doc.createElement !== 'function' || !wpEntry || !wpEntry.img) return null;
       try {
         var stageW1 = 112;
@@ -1190,52 +1184,50 @@
         var g2 = c2.getContext('2d');
         if (!g1 || !g2) return null;
 
+        /* 离屏降采预烘焙冰封磨砂底图：零 getImageData/putImageData 同步回读，仅在首次命中该壁纸时烘焙并缓存复用 */
         g1.imageSmoothingEnabled = true;
         g1.imageSmoothingQuality = 'high';
+        var filterDone = false;
         if ('filter' in g1) {
           try {
+            var desatExpr = isMono ? 'grayscale(1)' : 'saturate(0.08)';
             g1.filter = isLight
-              ? 'blur(2.2px) saturate(0.08) brightness(0.99) contrast(0.84)'
-              : 'blur(2.2px) saturate(0.08) brightness(0.88) contrast(0.88)';
+              ? ('blur(2.2px) ' + desatExpr + ' brightness(0.99) contrast(0.84)')
+              : ('blur(2.2px) ' + desatExpr + ' brightness(0.88) contrast(0.88)');
+            filterDone = Boolean(g1.filter && g1.filter !== 'none');
           } catch (_e1) {}
         }
         g1.drawImage(wpEntry.img, -4, -3, stageW1 + 8, stageH1 + 6);
-
-        /* Pixel-level ~92% cold-slate desaturation fallback on compact 112x34 buffer when getImageData is supported */
-        if (typeof g1.getImageData === 'function' && typeof g1.putImageData === 'function') {
+        if ('filter' in g1) {
           try {
-            var imgData = g1.getImageData(0, 0, stageW1, stageH1);
-            var px = imgData && imgData.data;
-            if (px && px.length >= stageW1 * stageH1 * 4) {
-              var slateR = isLight ? 232 : 34;
-              var slateG = isLight ? 238 : 44;
-              var slateB = isLight ? 247 : 58;
-              var veilMix = isLight ? 0.24 : 0.20;
-              for (var p = 0; p < px.length; p += 4) {
-                var r = px[p];
-                var g = px[p + 1];
-                var b = px[p + 2];
-                var lum = 0.299 * r + 0.587 * g + 0.114 * b;
-                var dr = lum * 0.92 + r * 0.08;
-                var dg = lum * 0.92 + g * 0.08;
-                var db = Math.min(255, lum * 0.95 + b * 0.08 + (isLight ? 3 : 5));
-                px[p] = Math.round(dr * (1 - veilMix) + slateR * veilMix);
-                px[p + 1] = Math.round(dg * (1 - veilMix) + slateG * veilMix);
-                px[p + 2] = Math.round(db * (1 - veilMix) + slateB * veilMix);
-              }
-              g1.putImageData(imgData, 0, 0);
-            }
-          } catch (_pxErr) {}
+            g1.filter = 'none';
+          } catch (_e1r) {}
         }
+
+        /* 纯 Canvas2D 合成冷石板灰雾面纱（替代逐像素 getImageData CPU 读回，零 GPU→CPU 同步栅栏） */
+        if (!filterDone) {
+          g1.save();
+          setCompositeSafe(g1, 'saturation');
+          g1.fillStyle = isLight ? 'rgba(218, 226, 238, 0.92)' : 'rgba(38, 46, 60, 0.92)';
+          g1.fillRect(0, 0, stageW1, stageH1);
+          g1.restore();
+        }
+        g1.fillStyle = isLight ? 'rgba(232, 238, 247, 0.24)' : 'rgba(34, 44, 58, 0.20)';
+        g1.fillRect(0, 0, stageW1, stageH1);
 
         g2.imageSmoothingEnabled = true;
         g2.imageSmoothingQuality = 'high';
         if ('filter' in g2) {
           try {
-            g2.filter = 'blur(2.8px)';
+            g2.filter = 'blur(3.2px)';
           } catch (_e2) {}
         }
         g2.drawImage(c1, 0, 0, stageW1, stageH1, 0, 0, stageW2, stageH2);
+        if ('filter' in g2) {
+          try {
+            g2.filter = 'none';
+          } catch (_e2r) {}
+        }
         c1.width = 0;
         c1.height = 0;
         try {
@@ -1290,7 +1282,7 @@
         if (isOrchUnsupported) {
           ctx.globalAlpha = clamp(alpha * (tokens.isLight ? 0.76 : 0.74), 0, 1);
           if (bgState.getFrostedSurface && (bgState.preferOffscreenBlur || !supportsFilterProp)) {
-            var frostedSurf = bgState.getFrostedSurface(modeTag, lookupKey, wpEntry, tokens.isLight);
+            var frostedSurf = bgState.getFrostedSurface(modeTag, lookupKey, wpEntry, tokens.isLight, tokens.isMono);
             if (frostedSurf) {
               drawSource = frostedSurf;
               usingOffscreenFrosted = true;
@@ -1300,11 +1292,10 @@
 
         if (tokens.isMono || isOrchUnsupported) {
           var filterApplied = false;
-          if (supportsFilterProp) {
+          /* 已命中离屏预烘焙冰封缓存时，直接零滤镜贴图，彻底避免热路径大画布 ctx.filter='blur(...)' */
+          if (!usingOffscreenFrosted && supportsFilterProp) {
             try {
-              if (usingOffscreenFrosted) {
-                ctx.filter = tokens.isMono ? 'blur(8px) grayscale(1)' : 'blur(8px)';
-              } else if (tokens.isMono && isOrchUnsupported) {
+              if (tokens.isMono && isOrchUnsupported) {
                 ctx.filter = tokens.isLight
                   ? 'blur(16px) grayscale(1) brightness(0.99) contrast(0.84)'
                   : 'blur(16px) grayscale(1) brightness(0.88) contrast(0.88)';
@@ -1321,7 +1312,7 @@
             } catch (_fErr) {}
           }
           if (isOrchUnsupported && !filterApplied && !usingOffscreenFrosted && bgState.getFrostedSurface) {
-            var fallbackFrosted = bgState.getFrostedSurface(modeTag, lookupKey, wpEntry, tokens.isLight);
+            var fallbackFrosted = bgState.getFrostedSurface(modeTag, lookupKey, wpEntry, tokens.isLight, tokens.isMono);
             if (fallbackFrosted) {
               drawSource = fallbackFrosted;
               usingOffscreenFrosted = true;
@@ -1549,14 +1540,11 @@
 
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
-      if (!isLight && !isOrchUnsupported) {
-        setShadow(ctx, 'rgba(0, 0, 0, 0.52)', 12, 0, 3);
-      }
+      /* 消除高开销 Canvas2D shadowBlur：高对比暗色底板已确保标题极度锐利，无多余离屏模糊图层分配 */
       ctx.fillStyle = isOrchUnsupported
         ? tokens.lockedTitleHex
         : (isAvail ? tokens.titleHex : (tokens.standbyTitleHex || tokens.titleHex));
       ctx.fillText(finalTitle, RIGHT_ZONE_X, 186);
-      clearShadow(ctx);
       setLetterSpacingSafe(ctx, '0px');
 
       ctx.restore();
@@ -1595,12 +1583,10 @@
 
       ctx.save();
 
-      /* 1) 通透磨砂毛玻璃外胶囊底座（Dark 烟熏毛玻璃 / Light 白冰毛玻璃） */
-      if (isLight) {
-        setShadow(ctx, 'rgba(15, 23, 42, 0.08)', 14, 0, 4);
-      } else {
-        setShadow(ctx, 'rgba(0, 0, 0, 0.34)', 16, 0, 4);
-      }
+      /* 1) 通透磨砂毛玻璃外胶囊底座（以轻量偏移暗底圆角替代高耗 shadowBlur，零离屏高斯模糊分配） */
+      drawRoundRectPath(ctx, wellX, wellY + 3, wellW, wellH, wellR);
+      ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.055)' : 'rgba(0, 0, 0, 0.22)';
+      ctx.fill();
       drawRoundRectPath(ctx, wellX, wellY, wellW, wellH, wellR);
       ctx.fillStyle = makeLinearGrad(
         ctx, wellX, wellY, wellX, wellY + wellH,
@@ -1611,7 +1597,6 @@
         tokens.wellFillTop
       );
       ctx.fill();
-      clearShadow(ctx);
 
       drawRoundRectPath(ctx, wellX + 0.75, wellY + 0.75, wellW - 1.5, wellH - 1.5, wellR - 0.75);
       ctx.lineWidth = 1.5;
@@ -1669,7 +1654,13 @@
       var blockCy = by + bh * 0.5;
 
       ctx.save();
-      setShadow(ctx, tokens.pillGlowCss, 16, 0, 3);
+      /* 以轻量外扩辉光描边/底晕替代高开销 shadowBlur=16，零离屏阴影图层分配 */
+      ctx.save();
+      ctx.globalAlpha = 0.28;
+      drawRoundRectPath(ctx, bx - 3, by - 1, bw + 6, bh + 4, br + 2);
+      ctx.fillStyle = tokens.pillGlowCss;
+      ctx.fill();
+      ctx.restore();
       drawRoundRectPath(ctx, bx, by, bw, bh, br);
       ctx.fillStyle = makeLinearGrad(
         ctx, bx, by, bx + bw, by + bh,
@@ -1680,7 +1671,6 @@
         tokens.pillTopHex
       );
       ctx.fill();
-      clearShadow(ctx);
 
       /* 顶部玻璃高光微折射层 */
       drawRoundRectPath(ctx, bx, by, bw, bh, br);
@@ -1720,18 +1710,15 @@
       ctx.font = '700 ' + actPx + 'px ' + SANS_STACK;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      if (tokens.pillTextHex === '#FFFFFF') {
-        setShadow(ctx, 'rgba(0, 0, 0, 0.34)', 4, 0, 1);
-      }
       ctx.fillStyle = tokens.pillTextHex;
       ctx.fillText(truncateText(ctx, actLabel, bw - 14), blockCx, blockCy + (isOrchActive ? -2 : 1));
-      clearShadow(ctx);
 
       ctx.restore();
     }
 
     /* 单档位、盲键 1s 化学快闪（含原子质量 STANDBY）或 Orchestrator 非编排主核锁定（NON-PLANNER）胶囊 —— 深浅双模通透适配 */
-    function drawSingleModeStatusCapsule(ctx, info, tokens, upperEnName) {
+    function drawSingleModeStatusCapsule(ctx, info, tokens, upperEnName, oledPack) {
+      var pack = (typeof oledPack === 'object' && oledPack) ? oledPack : (oledPack ? OLED_I18N['zh-CN'] : OLED_I18N.en);
       var capX = WELL_X;
       var capY = WELL_Y;
       var capW = WELL_W;
@@ -1748,7 +1735,9 @@
       if (info.blindFlash) {
         badgeLabel = formatBlindElementCapsuleLabel(info, upperEnName);
       } else if (isOrchUnsupported) {
-        badgeLabel = info.orchUnsupportedLabel ? String(info.orchUnsupportedLabel) : ORCH_NON_PLANNER_LABEL;
+        badgeLabel = info.orchUnsupportedLabel
+          ? String(info.orchUnsupportedLabel)
+          : pack.nonPlanner;
       } else if (info.singleModeLabel) {
         badgeLabel = String(info.singleModeLabel).toUpperCase();
       } else if (isOrchActive) {
@@ -1757,7 +1746,7 @@
         if (!info.isAuxModel) {
           badgeLabel = formatBlindElementCapsuleLabel(info, upperEnName);
         } else {
-          badgeLabel = hasCjkText(info.unreleasedText) ? 'STANDBY · 未开放副盘槽位' : 'STANDBY · RESERVED MACRO SLOT';
+          badgeLabel = pack.standbyAux;
         }
       }
 
@@ -1815,12 +1804,12 @@
       ctx.restore();
     }
 
-    /* 细腻光学玻璃表面微掠光（静止态 0 白雾污染防止浅色屏竖切泛白，动态指针扫掠由 GPU SCREEN_FS 及显式视差实时响应） */
-    function drawEditorialGlassSheenOverlay(ctx, W, H, isLight, orbitYaw, orbitPitch, pointerSweepX) {
+    /* 细腻光学玻璃表面微掠光（静止态 0 白雾污染防止浅色屏竖切泛白；gpuSheenHandled=true 时由 GPU SCREEN_FS 零成本接管动态掠光） */
+    function drawEditorialGlassSheenOverlay(ctx, W, H, isLight, orbitYaw, orbitPitch, pointerSweepX, gpuSheenHandled) {
       ctx.save();
       var hasExplicitSweep = typeof pointerSweepX === 'number' && isFinite(pointerSweepX);
       var hasOrbitMotion = Math.abs(Number(orbitYaw) || 0) > 0.008 || Math.abs(Number(orbitPitch) || 0) > 0.008;
-      if (hasExplicitSweep || hasOrbitMotion) {
+      if (!gpuSheenHandled && (hasExplicitSweep || hasOrbitMotion)) {
         var yawShift = clamp((Number(orbitYaw) || 0) * 180, -140, 140);
         var pitchShift = clamp((Number(orbitPitch) || 0) * 80, -60, 60);
         var ptrShift = hasExplicitSweep ? clamp((pointerSweepX - 0.5) * 640, -320, 320) : 0;
@@ -1843,6 +1832,58 @@
       ctx.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.06)' : 'rgba(255, 255, 255, 0.07)';
       ctx.lineWidth = 2;
       ctx.strokeRect(1, 1, W - 2, H - 2);
+      ctx.restore();
+    }
+
+    /* 1.2s 轻盈克制「已同步会话 / SYNCED」左上角胶囊微标（结束自动收敛回 0fps） */
+    function drawSessionSyncedBadgeOverlay(ctx, labelText, alpha, slideY, tokens) {
+      if (!labelText || alpha <= 0.005) return;
+      var isLight = Boolean(tokens && tokens.isLight);
+      var isMono = Boolean(tokens && tokens.isMono);
+      var isCjk = hasCjkText(labelText);
+
+      ctx.save();
+      ctx.globalAlpha = clamp(alpha, 0, 1);
+
+      var fontPx = isCjk ? 22 : 20;
+      ctx.font = '600 ' + fontPx + 'px ' + (isCjk ? SANS_STACK : MONO_STACK);
+      setLetterSpacingSafe(ctx, isCjk ? '0.02em' : '0.06em');
+      var fitLabel = truncateText(ctx, labelText, 240);
+      var txtW = measureTextSafe(ctx, fitLabel);
+
+      var pillH = 38;
+      var pillW = Math.round(txtW + 46);
+      var pillX = 32;
+      var pillY = 26 + (slideY || 0);
+      var pillCy = pillY + pillH * 0.5;
+
+      drawRoundRectPath(ctx, pillX, pillY, pillW, pillH, pillH * 0.5);
+      ctx.fillStyle = isLight ? 'rgba(255, 255, 255, 0.78)' : 'rgba(12, 18, 28, 0.62)';
+      ctx.fill();
+
+      drawRoundRectPath(ctx, pillX + 0.75, pillY + 0.75, pillW - 1.5, pillH - 1.5, (pillH - 1.5) * 0.5);
+      ctx.lineWidth = 1.25;
+      ctx.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.14)' : 'rgba(255, 255, 255, 0.22)';
+      ctx.stroke();
+
+      var dotRgb = isMono
+        ? (isLight ? [0.18, 0.22, 0.30] : [0.90, 0.94, 0.98])
+        : (isLight ? [0.04, 0.62, 0.45] : [0.20, 0.86, 0.62]);
+      ctx.beginPath();
+      ctx.arc(pillX + 18, pillCy, 4.2, 0, TWO_PI);
+      ctx.fillStyle = rgb01ToCss(dotRgb, 1.0);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(pillX + 18, pillCy, 8.2, 0, TWO_PI);
+      ctx.fillStyle = rgb01ToCss(dotRgb, isLight ? 0.16 : 0.24);
+      ctx.fill();
+
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = isLight ? '#0F172A' : 'rgba(241, 245, 255, 0.94)';
+      ctx.fillText(fitLabel, pillX + 30, pillCy + 0.5);
+      setLetterSpacingSafe(ctx, '0px');
       ctx.restore();
     }
 
@@ -1891,6 +1932,8 @@
       var cacheKey = modeTag + ':' + keyStr;
       var existing = pool.entries.get(cacheKey);
       if (existing && existing.src === src && !existing.disposed) {
+        pool.entries.delete(cacheKey);
+        pool.entries.set(cacheKey, existing);
         return existing;
       }
 
@@ -1900,9 +1943,16 @@
       if (pool.entries.size >= MAX_WALLPAPER_CACHE) {
         var oldestKey = pool.entries.keys().next().value;
         var oldEntry = pool.entries.get(oldestKey);
-        if (oldEntry && oldEntry.img) {
-          oldEntry.img.onload = null;
-          oldEntry.img.onerror = null;
+        if (oldEntry) {
+          oldEntry.disposed = true;
+          if (oldEntry.img) {
+            oldEntry.img.onload = null;
+            oldEntry.img.onerror = null;
+            try {
+              oldEntry.img.src = '';
+            } catch (_evictSrcErr) {}
+            oldEntry.img = null;
+          }
         }
         pool.entries.delete(oldestKey);
       }
@@ -2008,10 +2058,20 @@
       var doc = opts.doc || (root && root.document) || (typeof document !== 'undefined' ? document : null);
       var onAsyncAssetReady = typeof opts.onAsyncAssetReady === 'function' ? opts.onAsyncAssetReady : null;
       var useLazySharedPool = Boolean(opts.lazyWallpapers === true);
+      /* 降采热路径（如 800x240 WebGL 纹理）默认启用离屏预烘焙模糊缓存，彻底消除热路径大画布 ctx.filter='blur(16px)' */
+      var defaultPreferOffscreenBlur = opts.preferOffscreenBlur !== undefined
+        ? Boolean(opts.preferOffscreenBlur)
+        : (width < DEFAULT_WIDTH);
       var isRealBrowserDom = Boolean(root && typeof root.HTMLElement === 'function');
 
       var surf = createOffscreenSurface(doc, opts.canvas || null, width, height);
       var disposed = false;
+      var paused = Boolean(opts.paused);
+      var pausedAtMs = 0;
+      var explicitTargetFps = opts.targetFps !== undefined ? normalizeOledTargetFps(opts.targetFps) : null;
+      var explicitMotionLevel = opts.motionLevel !== undefined ? normalizeOledMotionLevel(opts.motionLevel) : null;
+      var explicitLang = typeof opts.lang === 'string' && opts.lang.trim() ? opts.lang.trim() : '';
+      var explicitZh = typeof opts.zh === 'boolean' ? opts.zh : null;
 
       var sharedPool = useLazySharedPool ? getSharedPoolForRoot(root) : null;
       var wallpaperCache = new Map();
@@ -2044,6 +2104,21 @@
       var sliderAnimActive = false;
       var wasDraggingSlider = false;
 
+      /* 1.2s 轻盈「已同步会话 / SYNCED」角落胶囊微标状态机 */
+      var syncBadgeActive = false;
+      var syncBadgeCustomLabel = '';
+      var syncBadgeDurationMs = SYNC_BADGE_DEFAULT_DURATION_MS;
+      var syncBadgeStartMs = 0;
+      var syncBadgeUsesCustomClock = false;
+      var syncBadgePendingAnchor = false;
+      var syncBadgeClearTimer = 0;
+
+      var lastRenderClockMs = 0;
+      var lastRenderUsedCustomClock = false;
+      var lastDrawClockMs = 0;
+      var lastStaticRenderKey = '';
+      var lastDrawWasFinalStatic = false;
+
       var lastDeckInfo = null;
       var lastThemeProfile = null;
       var lastBlendState = null;
@@ -2058,16 +2133,193 @@
         return runtimeNowMs();
       }
 
+      function readDomAttrSafe(attrName) {
+        try {
+          var de = doc && doc.documentElement;
+          if (de && typeof de.getAttribute === 'function') {
+            return de.getAttribute(attrName);
+          }
+        } catch (_aErr) {}
+        return null;
+      }
+
+      function resolveEffectiveTargetFps(bs) {
+        if (bs && bs.targetFps !== undefined && bs.targetFps !== null && bs.targetFps !== '') {
+          return normalizeOledTargetFps(bs.targetFps);
+        }
+        if (explicitTargetFps !== null) {
+          return explicitTargetFps;
+        }
+        return normalizeOledTargetFps(readDomAttrSafe('data-prism-target-fps'));
+      }
+
+      function resolveEffectiveMotionLevel(bs, tp) {
+        if (
+          (bs && bs.reducedMotion) ||
+          (tp && tp.reducedMotion) ||
+          checkOledPrefersReducedMotion(root)
+        ) {
+          return 'off';
+        }
+        if (bs && bs.motionLevel !== undefined && bs.motionLevel !== null && bs.motionLevel !== '') {
+          var bsLv = normalizeOledMotionLevel(bs.motionLevel);
+          if (bsLv) return bsLv;
+        }
+        if (explicitMotionLevel !== null) {
+          return explicitMotionLevel;
+        }
+        var domLv = normalizeOledMotionLevel(readDomAttrSafe('data-prism-motion'));
+        return domLv || 'ultra';
+      }
+
+      function isHostHiddenOrBlurred() {
+        try {
+          if (doc && (doc.hidden === true || doc.visibilityState === 'hidden')) {
+            return true;
+          }
+          if (readDomAttrSafe('data-prism-win-blur') === '1') {
+            return true;
+          }
+        } catch (_hErr) {}
+        return false;
+      }
+
+      function isEffectivelyPaused(bs) {
+        return Boolean(paused || (bs && bs.paused === true) || isHostHiddenOrBlurred());
+      }
+
+      function cancelSyncBadgeTimer() {
+        if (syncBadgeClearTimer) {
+          try {
+            if (root && typeof root.clearTimeout === 'function') {
+              root.clearTimeout(syncBadgeClearTimer);
+            } else if (typeof clearTimeout === 'function') {
+              clearTimeout(syncBadgeClearTimer);
+            }
+          } catch (_tErr) {}
+          syncBadgeClearTimer = 0;
+        }
+      }
+
+      function setTargetFps(fps) {
+        if (fps === null || fps === undefined || fps === '') {
+          explicitTargetFps = null;
+        } else {
+          explicitTargetFps = normalizeOledTargetFps(fps);
+        }
+      }
+
+      function setMotionLevel(level) {
+        if (level === null || level === undefined || level === '') {
+          explicitMotionLevel = null;
+        } else {
+          explicitMotionLevel = normalizeOledMotionLevel(level);
+        }
+        if (resolveEffectiveMotionLevel(lastBlendState, lastThemeProfile) === 'off') {
+          crossFadeActive = false;
+          fromBgState = null;
+          sliderAnimActive = false;
+          sliderCurrentPos = sliderTargetIdx;
+        }
+      }
+
+      function setPaused(nextPaused) {
+        var flag = Boolean(nextPaused);
+        if (paused === flag) return;
+        var clk = lastRenderUsedCustomClock ? lastRenderClockMs : readPainterClockMs();
+        if (flag) {
+          paused = true;
+          pausedAtMs = clk;
+        } else {
+          paused = false;
+          if (!lastRenderUsedCustomClock && pausedAtMs > 0) {
+            var pauseGap = Math.max(0, readPainterClockMs() - pausedAtMs);
+            if (crossFadeActive && !fadeUsesCustomClock) fadeStartMs += pauseGap;
+            if (sliderAnimActive && !sliderUsesCustomClock) sliderStartMs += pauseGap;
+            if (syncBadgeActive && !syncBadgeUsesCustomClock) syncBadgeStartMs += pauseGap;
+          }
+          pausedAtMs = 0;
+          lastDrawClockMs = 0;
+        }
+      }
+
+      function showSessionSyncedBadge(label, durationMs, nowOverride) {
+        if (disposed) return;
+        cancelSyncBadgeTimer();
+        var resolvedLabel = '';
+        var resolvedDuration = SYNC_BADGE_DEFAULT_DURATION_MS;
+        var resolvedNow = nowOverride;
+
+        if (label && typeof label === 'object') {
+          resolvedLabel = typeof label.label === 'string' ? label.label.trim() : '';
+          if (label.durationMs !== undefined) resolvedDuration = Number(label.durationMs);
+          if (label.now !== undefined) resolvedNow = label.now;
+        } else if (typeof label === 'number' && isFinite(label)) {
+          resolvedDuration = label;
+          if (typeof durationMs === 'number' && isFinite(durationMs)) resolvedNow = durationMs;
+        } else {
+          resolvedLabel = typeof label === 'string' ? label.trim() : '';
+          if (durationMs !== undefined) resolvedDuration = Number(durationMs);
+        }
+
+        if (!isFinite(resolvedDuration) || resolvedDuration <= 0) {
+          resolvedDuration = SYNC_BADGE_DEFAULT_DURATION_MS;
+        }
+        resolvedDuration = clamp(resolvedDuration, 200, 6000);
+
+        syncBadgeCustomLabel = resolvedLabel;
+        syncBadgeDurationMs = resolvedDuration;
+        syncBadgeActive = true;
+        lastStaticRenderKey = '';
+        lastDrawWasFinalStatic = false;
+        lastDrawClockMs = 0;
+
+        if (typeof resolvedNow === 'number' && isFinite(resolvedNow)) {
+          syncBadgeStartMs = resolvedNow;
+          syncBadgeUsesCustomClock = true;
+          syncBadgePendingAnchor = false;
+        } else if (lastRenderUsedCustomClock) {
+          syncBadgeStartMs = lastRenderClockMs;
+          syncBadgeUsesCustomClock = true;
+          syncBadgePendingAnchor = false;
+        } else {
+          syncBadgeStartMs = readPainterClockMs();
+          syncBadgeUsesCustomClock = false;
+          syncBadgePendingAnchor = true;
+        }
+
+        if (resolveEffectiveMotionLevel(lastBlendState, lastThemeProfile) === 'off' && onAsyncAssetReady) {
+          var schedTimeout = (root && typeof root.setTimeout === 'function')
+            ? root.setTimeout.bind(root)
+            : (typeof setTimeout === 'function' ? setTimeout : null);
+          if (schedTimeout) {
+            syncBadgeClearTimer = schedTimeout(function () {
+              syncBadgeClearTimer = 0;
+              if (disposed) return;
+              syncBadgeActive = false;
+              lastStaticRenderKey = '';
+              try {
+                onAsyncAssetReady({ reason: 'sync-badge-expired' });
+              } catch (_cbErr) {}
+            }, resolvedDuration);
+          }
+        }
+      }
+
       function getImageConstructor() {
         return resolveImageConstructorForRoot(root);
       }
 
-      function getFrostedSurfaceForKey(modeTag, keyId, wpEntry, isLight) {
+      function getFrostedSurfaceForKey(modeTag, keyId, wpEntry, isLight, isMono) {
         if (disposed || !wpEntry || !wpEntry.img) return null;
-        var fKey = modeTag + ':' + String(keyId);
+        var fKey = modeTag + ':' + String(keyId) + (isMono ? ':mono' : '');
         var targetMap = sharedPool ? sharedPool.frosted : localFrostedCache;
         var cachedCv = targetMap.get(fKey);
-        if (cachedCv && cachedCv.width > 0) return cachedCv;
+        if (cachedCv && cachedCv.width > 0) {
+          targetMap.delete(fKey);
+          targetMap.set(fKey, cachedCv);
+          return cachedCv;
+        }
         if (targetMap.size >= 16) {
           var firstK = targetMap.keys().next().value;
           var oldCv = targetMap.get(firstK);
@@ -2079,7 +2331,7 @@
           }
           targetMap.delete(firstK);
         }
-        var built = buildFrostedDownsampleCanvas(doc, wpEntry, isLight);
+        var built = buildFrostedDownsampleCanvas(doc, wpEntry, isLight, Boolean(isMono));
         if (built) {
           targetMap.set(fKey, built);
         }
@@ -2098,6 +2350,8 @@
         var cacheKey = modeTag + ':' + keyStr;
         var existing = wallpaperCache.get(cacheKey);
         if (existing && existing.src === src) {
+          wallpaperCache.delete(cacheKey);
+          wallpaperCache.set(cacheKey, existing);
           return existing;
         }
 
@@ -2110,6 +2364,10 @@
           if (oldEntry && oldEntry.img) {
             oldEntry.img.onload = null;
             oldEntry.img.onerror = null;
+            try {
+              oldEntry.img.src = '';
+            } catch (_evictLocalSrcErr) {}
+            oldEntry.img = null;
           }
           wallpaperCache.delete(oldestKey);
         }
@@ -2209,6 +2467,8 @@
           hoveredEffort: d.hoveredEffort ? String(d.hoveredEffort) : '',
           pressedEffort: d.pressedEffort ? String(d.pressedEffort) : '',
           dragEffortProgress: typeof d.dragEffortProgress === 'number' ? d.dragEffortProgress : undefined,
+          zh: typeof d.zh === 'boolean' ? d.zh : undefined,
+          lang: typeof d.lang === 'string' ? d.lang : '',
         };
       }
 
@@ -2274,7 +2534,13 @@
         var info = normalizeDeckInfo(deckInfo);
         var tp = parsed.tp;
         var bs = parsed.bs;
-        var reducedMotion = Boolean(bs.reducedMotion || tp.reducedMotion);
+        var effMotionLevel = resolveEffectiveMotionLevel(bs, tp);
+        var reducedMotion = effMotionLevel === 'off';
+        var effTargetFps = resolveEffectiveTargetFps(bs);
+        var minFrameGapMs = resolveOledMinFrameGapMs(effTargetFps);
+        var effPaused = isEffectivelyPaused(bs);
+        var langCode = resolveOledLocale(explicitLang, explicitZh, info, tp, bs, doc, root);
+        var oledPack = OLED_I18N[langCode] || OLED_I18N.en;
 
         lastDeckInfo = info;
         lastBlendState = bs;
@@ -2294,7 +2560,18 @@
         var pointerSweepX = typeof bs.pointerNormX === 'number' ? bs.pointerNormX : undefined;
 
         var hasCustomNow = typeof parsed.explicitNow === 'number' && isFinite(parsed.explicitNow);
-        var now = hasCustomNow ? parsed.explicitNow : readPainterClockMs();
+        var rawNow = hasCustomNow ? parsed.explicitNow : readPainterClockMs();
+        var now = effPaused ? (pausedAtMs > 0 ? pausedAtMs : (lastRenderClockMs > 0 ? lastRenderClockMs : rawNow)) : rawNow;
+        if (!effPaused) {
+          lastRenderClockMs = now;
+          lastRenderUsedCustomClock = hasCustomNow;
+        }
+
+        if (syncBadgeActive && syncBadgePendingAnchor && hasCustomNow) {
+          syncBadgeStartMs = now;
+          syncBadgeUsesCustomClock = true;
+          syncBadgePendingAnchor = false;
+        }
 
         var LW = DEFAULT_WIDTH;
         var LH = DEFAULT_HEIGHT;
@@ -2356,15 +2633,20 @@
           }
 
           if (sliderAnimActive) {
-            var sElapsed = Math.max(0, now - sliderStartMs);
-            if (sElapsed >= SLIDER_DURATION_MS) {
+            if (reducedMotion) {
               sliderCurrentPos = sliderTargetIdx;
               sliderAnimActive = false;
-            } else {
-              var sNorm = clamp(sElapsed / SLIDER_DURATION_MS, 0, 1);
-              var sp = easeOutCrystalFader(sNorm);
-              sliderCurrentPos = sliderFromPos + (sliderTargetIdx - sliderFromPos) * sp;
-              effortSwell = Math.sin(sNorm * Math.PI);
+            } else if (!effPaused) {
+              var sElapsed = Math.max(0, now - sliderStartMs);
+              if (sElapsed >= SLIDER_DURATION_MS) {
+                sliderCurrentPos = sliderTargetIdx;
+                sliderAnimActive = false;
+              } else {
+                var sNorm = clamp(sElapsed / SLIDER_DURATION_MS, 0, 1);
+                var sp = easeOutCrystalFader(sNorm);
+                sliderCurrentPos = sliderFromPos + (sliderTargetIdx - sliderFromPos) * sp;
+                effortSwell = Math.sin(sNorm * Math.PI);
+              }
             }
           } else if (!hasDragProg) {
             sliderCurrentPos = sliderTargetIdx;
@@ -2400,6 +2682,8 @@
               : (optic.watermark || 'Or'))
           : String(info.symbol || optic.watermark || 'C').slice(0, 3);
 
+        var gpuSheenHandled = Boolean(bs.gpuSheenHandled);
+        var instantBgSwitch = Boolean(reducedMotion || bs.instantSwitch);
         var nextBgObj = {
           key: nextBgKey,
           z: info.z,
@@ -2413,7 +2697,7 @@
           tokens: tokens,
           requestWp: requestWallpaperEntry,
           getFrostedSurface: getFrostedSurfaceForKey,
-          preferOffscreenBlur: Boolean(bs.forceOffscreenBlur),
+          preferOffscreenBlur: Boolean(bs.forceOffscreenBlur || defaultPreferOffscreenBlur),
         };
 
         if (!currentBgState) {
@@ -2421,7 +2705,7 @@
           fromBgState = null;
           crossFadeActive = false;
         } else if (currentBgState.key !== nextBgKey) {
-          if (reducedMotion) {
+          if (instantBgSwitch) {
             currentBgState = nextBgObj;
             fromBgState = null;
             crossFadeActive = false;
@@ -2444,19 +2728,104 @@
         if (typeof bs.crossFadeAlpha === 'number') {
           fadeAlpha = clamp(bs.crossFadeAlpha, 0, 1);
         } else if (crossFadeActive && fromBgState) {
-          var elapsed = Math.max(0, now - fadeStartMs);
-          if (elapsed >= FADE_DURATION_MS) {
+          if (reducedMotion) {
             fadeAlpha = 1.0;
             crossFadeActive = false;
             fromBgState = null;
           } else {
-            fadeAlpha = easeOutCubic(elapsed / FADE_DURATION_MS);
+            var elapsed = Math.max(0, now - fadeStartMs);
+            if (!effPaused && elapsed >= FADE_DURATION_MS) {
+              fadeAlpha = 1.0;
+              crossFadeActive = false;
+              fromBgState = null;
+            } else {
+              fadeAlpha = easeOutCubic(elapsed / FADE_DURATION_MS);
+            }
+          }
+        }
+
+        /* 3) 1.2s 轻盈「已同步会话 / SYNCED」角落胶囊微标包络 */
+        var syncBadgeAlpha = 0;
+        var syncBadgeSlideY = 0;
+        var syncBadgeDrawLabel = '';
+        if (syncBadgeActive) {
+          var sbElapsed = Math.max(0, now - syncBadgeStartMs);
+          if (!effPaused && sbElapsed >= syncBadgeDurationMs) {
+            syncBadgeActive = false;
+          } else {
+            syncBadgeDrawLabel = syncBadgeCustomLabel || oledPack.synced;
+            if (reducedMotion) {
+              syncBadgeAlpha = 1.0;
+              syncBadgeSlideY = 0;
+            } else {
+              var fadeInMs = Math.min(180, syncBadgeDurationMs * 0.22);
+              var fadeOutMs = Math.min(280, syncBadgeDurationMs * 0.30);
+              var remainMs = Math.max(0, syncBadgeDurationMs - sbElapsed);
+              if (sbElapsed < fadeInMs && fadeInMs > 0) {
+                var inT = easeOutCubic(sbElapsed / fadeInMs);
+                syncBadgeAlpha = inT;
+                syncBadgeSlideY = -4 * (1 - inT);
+              } else if (remainMs < fadeOutMs && fadeOutMs > 0) {
+                var outT = easeOutCubic(remainMs / fadeOutMs);
+                syncBadgeAlpha = outT;
+                syncBadgeSlideY = -2 * (1 - outT);
+              } else {
+                syncBadgeAlpha = 1.0;
+                syncBadgeSlideY = 0;
+              }
+            }
           }
         }
 
         if (!surf || !surf.ctx) {
           return null;
         }
+
+        /* 动态高刷限帧：仅对同状态连续动画推进帧限流，内容变化帧即时绘制；gpuSheenHandled 时忽略视角/扫键微光以杜绝无意义重绘 */
+        var staticRenderKey = [
+          nextBgKey,
+          info.title,
+          info.orchUnsupportedLabel,
+          info.singleModeLabel,
+          info.blindFlashBanner,
+          info.hoveredEffort,
+          info.pressedEffort,
+          wellLayout.activeIndex,
+          nLevels,
+          langCode,
+          gpuSheenHandled ? '0' : Math.round(orbitYaw * 100),
+          gpuSheenHandled ? '0' : Math.round(orbitPitch * 100),
+          (!gpuSheenHandled && pointerSweepX !== undefined) ? Math.round(pointerSweepX * 100) : '',
+          syncBadgeActive ? (syncBadgeDrawLabel || '1') : '0',
+        ].join('|');
+
+        var anyAnimActive = Boolean(
+          (crossFadeActive && fromBgState) ||
+          sliderAnimActive ||
+          (syncBadgeActive && !reducedMotion)
+        );
+        if (
+          !anyAnimActive &&
+          lastDrawWasFinalStatic &&
+          bs.skipIdenticalStatic === true &&
+          lastDrawClockMs > 0 &&
+          staticRenderKey === lastStaticRenderKey
+        ) {
+          return surf.canvas;
+        }
+        if (
+          minFrameGapMs > 0 &&
+          anyAnimActive &&
+          lastDrawClockMs > 0 &&
+          staticRenderKey === lastStaticRenderKey &&
+          now >= lastDrawClockMs &&
+          (now - lastDrawClockMs) < minFrameGapMs
+        ) {
+          return surf.canvas;
+        }
+        lastStaticRenderKey = staticRenderKey;
+        lastDrawClockMs = now;
+        lastDrawWasFinalStatic = !anyAnimActive;
 
         var ctx = surf.ctx;
         var sx = width / DEFAULT_WIDTH;
@@ -2469,12 +2838,14 @@
         setCompositeSafe(ctx, 'source-over');
         ctx.globalAlpha = 1.0;
 
-        /* Layer 1: 满幅深浅官方海报底图（切模型/深浅时带 14px 优雅水平视差滑移） */
+        /* Layer 1: 满幅深浅官方海报底图（gpuSheenHandled 下视差交由 GPU 透视自然表现，避免纯旋转触发整幅 Canvas2D 重绘） */
+        var drawParYaw = gpuSheenHandled ? 0 : orbitYaw;
+        var drawParPitch = gpuSheenHandled ? 0 : orbitPitch;
         if (crossFadeActive && fromBgState && fadeAlpha < 0.999) {
-          drawFullBleedBannerLayer(ctx, LW, LH, fromBgState, grainPkg, 1.0, -14 * fadeAlpha, orbitYaw, orbitPitch, 0);
-          drawFullBleedBannerLayer(ctx, LW, LH, currentBgState, grainPkg, fadeAlpha, 14 * (1.0 - fadeAlpha), orbitYaw, orbitPitch, effortSwell);
+          drawFullBleedBannerLayer(ctx, LW, LH, fromBgState, grainPkg, 1.0, -14 * fadeAlpha, drawParYaw, drawParPitch, 0);
+          drawFullBleedBannerLayer(ctx, LW, LH, currentBgState, grainPkg, fadeAlpha, 14 * (1.0 - fadeAlpha), drawParYaw, drawParPitch, effortSwell);
         } else {
-          drawFullBleedBannerLayer(ctx, LW, LH, currentBgState, grainPkg, 1.0, 0, orbitYaw, orbitPitch, effortSwell);
+          drawFullBleedBannerLayer(ctx, LW, LH, currentBgState, grainPkg, 1.0, 0, drawParYaw, drawParPitch, effortSwell);
         }
 
         var upperEnName = extractElementUpperName(info);
@@ -2483,15 +2854,20 @@
         drawEditorialHeroHeader(ctx, info, optic, tokens, upperEnName);
 
         if (info.blindFlash) {
-          drawSingleModeStatusCapsule(ctx, info, tokens, upperEnName);
+          drawSingleModeStatusCapsule(ctx, info, tokens, upperEnName, oledPack);
         } else if (!info.orchUnsupported && info.isAvailable && wellLayout.well && nLevels > 1) {
           drawFrostedEffortCapsuleBar(ctx, wellLayout, info, tokens, sliderCurrentPos);
         } else {
-          drawSingleModeStatusCapsule(ctx, info, tokens, upperEnName);
+          drawSingleModeStatusCapsule(ctx, info, tokens, upperEnName, oledPack);
         }
 
-        /* Layer 3: 清透斜向玻璃镜面微掠光（零黑色扫描网，完美还原白昼明亮色泽） */
-        drawEditorialGlassSheenOverlay(ctx, LW, LH, tokens.isLight, orbitYaw, orbitPitch, pointerSweepX);
+        /* Layer 3: 1.2s 轻盈「已同步会话 / SYNCED」角落胶囊微标 */
+        if (syncBadgeAlpha > 0.005 && syncBadgeDrawLabel) {
+          drawSessionSyncedBadgeOverlay(ctx, syncBadgeDrawLabel, syncBadgeAlpha, syncBadgeSlideY, tokens);
+        }
+
+        /* Layer 4: 清透斜向玻璃镜面微掠光（零黑色扫描网；3D 模式下动态掠光由 GPU SCREEN_FS 零成本渲染） */
+        drawEditorialGlassSheenOverlay(ctx, LW, LH, tokens.isLight, orbitYaw, orbitPitch, pointerSweepX, gpuSheenHandled);
 
         ctx.restore();
         return surf.canvas;
@@ -2518,13 +2894,19 @@
       }
 
       function isAnimating(nowOverride) {
-        if (disposed) return false;
+        if (disposed || isEffectivelyPaused(lastBlendState)) return false;
+        var effMotion = resolveEffectiveMotionLevel(lastBlendState, lastThemeProfile);
+        var reducedNow = effMotion === 'off';
         var hasNow = typeof nowOverride === 'number' && !isNaN(nowOverride);
 
         var fadeRunning = false;
-        if (crossFadeActive && fromBgState) {
+        if (!reducedNow && crossFadeActive && fromBgState) {
           if (hasNow) {
             fadeRunning = nowOverride - fadeStartMs < FADE_DURATION_MS;
+            if (!fadeRunning) {
+              crossFadeActive = false;
+              fromBgState = null;
+            }
           } else if (!fadeUsesCustomClock) {
             if (readPainterClockMs() - fadeStartMs > ANIM_STALE_GUARD_MS) {
               crossFadeActive = false;
@@ -2538,9 +2920,13 @@
         }
 
         var sliderRunning = false;
-        if (sliderAnimActive) {
+        if (!reducedNow && sliderAnimActive) {
           if (hasNow) {
             sliderRunning = nowOverride - sliderStartMs < SLIDER_DURATION_MS;
+            if (!sliderRunning) {
+              sliderAnimActive = false;
+              sliderCurrentPos = sliderTargetIdx;
+            }
           } else if (!sliderUsesCustomClock) {
             if (readPainterClockMs() - sliderStartMs > ANIM_STALE_GUARD_MS) {
               sliderAnimActive = false;
@@ -2553,24 +2939,84 @@
           }
         }
 
+        var badgeRunning = false;
+        if (!reducedNow && syncBadgeActive) {
+          if (hasNow) {
+            var refStart = syncBadgePendingAnchor ? nowOverride : syncBadgeStartMs;
+            badgeRunning = (nowOverride - refStart) < syncBadgeDurationMs;
+            if (!badgeRunning) {
+              syncBadgeActive = false;
+            }
+          } else if (!syncBadgeUsesCustomClock) {
+            var sbNow = readPainterClockMs();
+            if (sbNow - syncBadgeStartMs >= syncBadgeDurationMs) {
+              syncBadgeActive = false;
+            } else {
+              badgeRunning = true;
+            }
+          } else {
+            badgeRunning = true;
+          }
+        }
+
         var continuous = Boolean(
+          !reducedNow &&
           lastDeckInfo &&
-          lastDeckInfo.continuousGlow === true &&
-          !(lastBlendState && lastBlendState.reducedMotion)
+          lastDeckInfo.continuousGlow === true
         );
 
-        return Boolean(fadeRunning || sliderRunning || continuous);
+        return Boolean(fadeRunning || sliderRunning || badgeRunning || continuous);
       }
 
       function getCanvas() {
         return !disposed && surf ? surf.canvas : null;
       }
 
+      function releaseLocalCaches() {
+        fromBgState = null;
+        lastStaticRenderKey = '';
+        lastDrawWasFinalStatic = false;
+        lastDrawClockMs = 0;
+
+        wallpaperCache.forEach(function (entry) {
+          if (!entry) return;
+          if (entry.img) {
+            entry.img.onload = null;
+            entry.img.onerror = null;
+            try {
+              entry.img.src = '';
+            } catch (_e1) {}
+            entry.img = null;
+          }
+        });
+        wallpaperCache.clear();
+
+        localFrostedCache.forEach(function (cv) {
+          if (cv) {
+            try {
+              cv.width = 0;
+              cv.height = 0;
+            } catch (_e2) {}
+          }
+        });
+        localFrostedCache.clear();
+      }
+
+      function releaseCaches() {
+        releaseLocalCaches();
+        if (sharedPool) {
+          evictIdleOledWallpapers(root);
+        }
+      }
+
       function dispose() {
         if (disposed) return;
         disposed = true;
+        paused = true;
+        cancelSyncBadgeTimer();
         crossFadeActive = false;
         sliderAnimActive = false;
+        syncBadgeActive = false;
         wasDraggingSlider = false;
         sliderTrackIdentity = '';
         currentBgState = null;
@@ -2584,22 +3030,8 @@
           sharedListener = null;
         }
 
-        wallpaperCache.forEach(function (entry) {
-          if (entry && entry.img) {
-            entry.img.onload = null;
-            entry.img.onerror = null;
-          }
-        });
-        wallpaperCache.clear();
-        localFrostedCache.forEach(function (cv) {
-          if (cv) {
-            try {
-              cv.width = 0;
-              cv.height = 0;
-            } catch (_e) {}
-          }
-        });
-        localFrostedCache.clear();
+        /* Keep sharedPool warm across normal close()->open() cycles; explicit releaseCaches() evicts sharedPool on hidden/destroy */
+        releaseLocalCaches();
 
         if (surf) {
           if (surf.owned && surf.canvas) {
@@ -2624,6 +3056,11 @@
         render: render,
         getEffortUvRects: getEffortUvRects,
         isAnimating: isAnimating,
+        setPaused: setPaused,
+        setTargetFps: setTargetFps,
+        setMotionLevel: setMotionLevel,
+        showSessionSyncedBadge: showSessionSyncedBadge,
+        releaseCaches: releaseCaches,
         dispose: dispose,
       };
     }
@@ -2632,6 +3069,7 @@
       createOledScreenPainter: createOledScreenPainter,
       prewarmOledWallpaper: prewarmOledWallpaper,
       evictIdleOledWallpapers: evictIdleOledWallpapers,
+      releaseCaches: evictIdleOledWallpapers,
       getCachedOledWallpaperCount: getCachedOledWallpaperCount,
     };
   }

@@ -12,6 +12,7 @@
   data-prism-accent="follow"
   data-prism-corners="soft"
   data-prism-ambient="100"
+  data-prism-perf-mode="balanced"
   data-prism-lang="zh-CN"
 >
 <head>
@@ -28,16 +29,16 @@
     rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230A0A0B'/%3E%3Cpath fill='%23F2EFE9' d='M12 2.4c.22 0 .42.15.48.37c.18.7.43 1.39.71 2.06c1.1 2.55 3.02 4.48 5.58 5.58c.67.28 1.36.53 2.06.71c.22.06.37.26.37.48s-.15.42-.37.48a14.6 14.6 0 0 0-2.06.71c-2.56 1.1-4.48 3.03-5.58 5.58c-.28.67-.53 1.36-.71 2.06a.49.49 0 0 1-.96 0a14.6 14.6 0 0 0-.71-2.06c-1.1-2.55-3.02-4.48-5.58-5.58a14.6 14.6 0 0 0-2.06-.71a.49.49 0 0 1 0-.96c.7-.18 1.39-.43 2.06-.71c2.56-1.1 4.48-3.03 5.58-5.58c.28-.67.53-1.36.71-2.06c.06-.22.26-.37.48-.37Z'/%3E%3C/svg%3E"
   />
-  <!-- Editorial typography: local bundled Instrument Serif WOFF2 (SIL OFL 1.1); progressive Noto Serif SC loaded via showcase.js on http(s) only for strict CSP & offline file:// purity -->
+  <!-- Editorial typography: local bundled Instrument Serif WOFF2 (SIL OFL 1.1); progressive Noto Serif SC loaded via showcase.js on public https only for strict CSP & offline file:// purity -->
   <link rel="stylesheet" href="./showcase/showcase.css" />
 </head>
 <body>
-  <!-- Minimalist 1px Hairline Book-Header -->
+  <!-- Minimalist Hairline Book-Header -->
   <header class="sc-book-header" role="banner">
     <nav class="sc-book-header-inner" aria-label="Design Study Navigation">
       <a href="#live-stage" class="sc-header-mark" aria-label="PRISM-118 Design Study">
         <span class="sc-header-code">PRISM-118</span>
-        <span class="sc-header-slash" aria-hidden="true">//</span>
+        <span class="sc-header-slash" aria-hidden="true">/</span>
         <span class="sc-header-author" data-i18n="header.byline">设计稿档案</span>
       </a>
 
@@ -52,54 +53,51 @@
   </header>
 
   <main>
-    <!-- ACT 00 · PROLOGUE: Spotlight Artifact Stage (Single Persistent WebGL2 Instance) -->
+    <!-- PROLOGUE: Spotlight Artifact Stage (Single Persistent WebGL2 Instance) -->
     <section class="sc-prologue" id="live-stage" aria-labelledby="hero-heading">
       <div class="sc-prologue-spotlight" aria-hidden="true"></div>
 
       <div class="sc-prologue-inner">
         <div class="sc-prologue-titleblock">
-          <p class="sc-plaque-line sc-prologue-catalogue" data-i18n="hero.catalogue">
-            DESIGN STUDY 01 · Z = 1..118 · PROTOTYPE ARCHIVE
-          </p>
           <h1 class="sc-hero-title" id="hero-heading">
-            <span data-i18n="hero.h1.pre">以 </span><em class="sc-serif-italic sc-latin-italic" data-i18n="hero.h1.em">CNC 6063</em><span data-i18n="hero.h1.mid"> 铝为构想的</span><br />
+            <span data-i18n="hero.h1.line1">以 CNC 6063 铝为构想的</span><br />
             <span data-i18n="hero.h1.line2">元素周期表交互设计稿。</span>
           </h1>
           <p class="sc-hero-subtitle" data-i18n="hero.sub">
-            118 种元素矩阵、暗明双模视窗底版与程序化按键声学的静态图版及实时 WebGL2 交互原型。
+            Z = 1..118 元素矩阵、十八幅暗明双模视窗底版与五层程序化声学的静态图版及实时 WebGL2 交互原型。
           </p>
         </div>
 
         <!-- Unframed Live Interactive PRISM-118 WebGL2 Artifact Stage -->
         <div class="sc-artifact-stage" id="sc-artifact-stage">
           <div id="sc-dock-host" class="sc-dock-mount-stage flex-col" data-prism-dock-host="1"></div>
-          <div class="sc-stage-standby" id="sc-stage-standby" data-visible="0">
-            <span class="sc-plaque-line" data-i18n="hero.standbyNote">PROTOTYPE ON STANDBY · ZERO GPU DRAW CALLS</span>
+          <div class="sc-stage-standby" id="sc-stage-standby" data-visible="0" hidden>
+            <span class="sc-meta-line" data-i18n="hero.standbyNote">原型待机中 · 零 GPU 绘制调用</span>
             <button type="button" class="sc-hairline-action" id="btn-stage-wake" data-i18n="hero.wakeBtn">[ + ] 展开 PRISM-118 原型</button>
           </div>
         </div>
       </div>
 
-      <!-- Bottom Swiss 1px Museum Plaques -->
+      <!-- Bottom Swiss Hairline Specification Bar -->
       <div class="sc-museum-plaque-bar" role="region" aria-label="Artifact Specifications">
         <div class="sc-plaque-cell">
-          <span class="sc-plaque-key" data-i18n="plaque.k1">MATERIAL</span>
+          <span class="sc-plaque-key" data-i18n="plaque.k1">材质</span>
           <span class="sc-plaque-val">CNC-6063</span>
         </div>
         <div class="sc-plaque-cell">
-          <span class="sc-plaque-key" data-i18n="plaque.k2">OPTICS</span>
-          <span class="sc-plaque-val" data-i18n="plaque.v2">18 DUAL-MODE PLATES</span>
+          <span class="sc-plaque-key" data-i18n="plaque.k2">光学</span>
+          <span class="sc-plaque-val" data-i18n="plaque.v2">18 幅双模底版 · 64×32 环境图</span>
         </div>
         <div class="sc-plaque-cell">
-          <span class="sc-plaque-key" data-i18n="plaque.k3">ACOUSTICS</span>
-          <span class="sc-plaque-val" data-i18n="plaque.v3">5-LAYER SYNTHESIS</span>
+          <span class="sc-plaque-key" data-i18n="plaque.k3">声学</span>
+          <span class="sc-plaque-val" data-i18n="plaque.v3">5 层实时合成</span>
         </div>
         <div class="sc-plaque-cell">
-          <span class="sc-plaque-key" data-i18n="plaque.k4">IDLE</span>
-          <span class="sc-plaque-val" id="sc-plaque-live">0.0 FPS · 6C CARBON</span>
+          <span class="sc-plaque-key" data-i18n="plaque.k4">运行态</span>
+          <span class="sc-plaque-val" id="sc-plaque-live">0.0 fps · 1024px · 6C Carbon</span>
         </div>
         <a href="#plate-concept-silicon" class="sc-plaque-cell sc-plaque-index">
-          <span class="sc-plaque-key" data-i18n="plaque.scroll">PLATES I–IV</span>
+          <span class="sc-plaque-key" data-i18n="plaque.scroll">图版 I–IV</span>
           <span class="sc-plaque-val" aria-hidden="true">↓</span>
         </a>
       </div>
@@ -113,9 +111,9 @@
         <div class="sc-spread-grid">
           <aside class="sc-marginalia">
             <div class="sc-marginalia-sticky">
-              <p class="sc-plaque-line" data-i18n="p1.kicker">PLATE I // CONCEPT &amp; PROTOTYPE</p>
+              <p class="sc-chapter-mark" data-i18n="p1.kicker">Plate I · 概念与原型</p>
               <h2 class="sc-plate-title" id="p1-title">
-                <span data-i18n="p1.title.pre">概念手稿</span><br class="sc-zh-br" /><em class="sc-serif-italic" data-i18n="p1.title.em">与实机原型对照</em>
+                <span data-i18n="p1.title.pre">概念手稿</span><br class="sc-zh-br" /><span data-i18n="p1.title.post">与实机原型对照</span>
               </h2>
               <p class="sc-plate-prose" data-i18n="p1.prose">
                 通过手写 GLSL ES 3.0 着色器将前期视觉草图落实为可交互的 WebGL2 原型，对照验证海玻璃键帽漫反射、透明轴座与 45° 倒角高光在实时渲染中的表现。
@@ -123,15 +121,15 @@
 
               <dl class="sc-spec-notes">
                 <div class="sc-spec-note-row">
-                  <dt data-i18n="p1.n1.k">KEYCAPS</dt>
+                  <dt data-i18n="p1.n1.k">键帽材质</dt>
                   <dd data-i18n="p1.n1.v">烟熏海玻璃（暗）· 粉彩冰翡玉（明）</dd>
                 </div>
                 <div class="sc-spec-note-row">
-                  <dt data-i18n="p1.n2.k">STEMS</dt>
+                  <dt data-i18n="p1.n2.k">轴座与微晶</dt>
                   <dd data-i18n="p1.n2.v">保彩水晶轴座 · 0.88U 磁悬浮微晶</dd>
                 </div>
                 <div class="sc-spec-note-row">
-                  <dt data-i18n="p1.n3.k">CHASSIS</dt>
+                  <dt data-i18n="p1.n3.k">机身工艺</dt>
                   <dd data-i18n="p1.n3.v">喷砂 6063 铝 · 150px 近场追光</dd>
                 </div>
               </dl>
@@ -139,7 +137,7 @@
           </aside>
 
           <div class="sc-plate-canvas">
-            <!-- Spread 1.1: Static 1:1 Macro Diptych with 1px Crosshair -->
+            <!-- Spread 1.1: Static 1:1 Macro Diptych -->
             <div class="sc-diptych-block">
               <div class="sc-diptych-pair">
                 <figure class="sc-plate-fig">
@@ -147,11 +145,11 @@
                     <img
                       src="./assets/concepts/concept-04-macro-artisan-glass-and-screen.jpg"
                       alt="Diffusion Concept Study — Artisan Sea-Glass Keycaps and Optical Screen"
-                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption class="sc-fig-plaque" data-i18n="p1.fig1">
-                    FIG 1.1 — DIFFUSION STUDY · ARTISAN GLASS &amp; KNURLED ENCODER
+                    图 1.1 · 概念草图：磨砂玻璃键帽与滚花旋钮
                   </figcaption>
                 </figure>
 
@@ -164,28 +162,28 @@
                     <img
                       src="./assets/renders/render-08-macro-dark-gemstone-caps.png"
                       alt="Real-Time WebGL2 GLSL PBR 3.5x Macro — PRISM-118 Smoked Sea-Glass and Crystal Stem"
-                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption class="sc-fig-plaque" data-i18n="p1.fig2">
-                    FIG 1.2 — REAL-TIME GLSL ES 3.0 · 3.5× MACRO SILICON CAPTURE
+                    图 1.2 · 实时 GLSL ES 3.0：3.5× 局部微距渲染
                   </figcaption>
                 </figure>
               </div>
             </div>
 
-            <!-- Spread 1.2: Full-Bleed 3.5× Macro & 360° Orbital Still Life -->
+            <!-- Spread 1.2: Full-Bleed 360° Orbital Still Life -->
             <div class="sc-diptych-block">
               <figure class="sc-plate-fig">
                 <div class="sc-fig-frame">
                   <img
                     src="./assets/renders/render-12-fullscreen-3d-orbit.png"
                     alt="PRISM-118 360-Degree Orbital Still Life in Obsidian Dark Anodized 6063 Aluminum"
-                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <figcaption class="sc-fig-plaque" data-i18n="p1.fig3">
-                  FIG 1.3 — 360° ORBITAL STUDY · 18×7 PERIODIC MATRIX &amp; MAGNETIC AUX-06 BRIDGE
+                  图 1.3 · 360° 悬浮视图：18×7 周期表矩阵与磁吸 AUX-06
                 </figcaption>
               </figure>
             </div>
@@ -198,11 +196,11 @@
                     <img
                       src="./assets/concepts/concept-01-obsidian-official-cobalt.jpg"
                       alt="Concept Sheet — Obsidian Cobalt Triptych Exploration"
-                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption class="sc-fig-plaque" data-i18n="p1.fig4">
-                    FIG 1.4 — CONCEPT · OBSIDIAN 6C COBALT
+                    图 1.4 · 概念草图：黑曜 6C 钴蓝配色
                   </figcaption>
                 </figure>
 
@@ -215,11 +213,11 @@
                     <img
                       src="./assets/renders/render-01-obsidian-dark-6c.png"
                       alt="Real-Time WebGL2 Render — Obsidian Dark 6C Carbon Full Triptych"
-                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption class="sc-fig-plaque" data-i18n="p1.fig5">
-                    FIG 1.5 — SILICON · 118-ELEMENT OBSIDIAN TRIPTYCH
+                    图 1.5 · 实时渲染：黑曜三联结构原型
                   </figcaption>
                 </figure>
               </div>
@@ -232,11 +230,11 @@
                     <img
                       src="./assets/concepts/concept-02-alabaster-daylight-editorial.jpg"
                       alt="Concept Sheet — Alabaster Daylight Editorial Study"
-                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption class="sc-fig-plaque" data-i18n="p1.fig6">
-                    FIG 1.6 — CONCEPT · ALABASTER 18Ar DAYLIGHT
+                    图 1.6 · 概念草图：暖白玉 18Ar 浅色配色
                   </figcaption>
                 </figure>
 
@@ -249,11 +247,11 @@
                     <img
                       src="./assets/renders/render-04-alabaster-light-18ar.png"
                       alt="Real-Time WebGL2 Render — Alabaster Light 18Ar Argon Daylight Triptych"
-                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption class="sc-fig-plaque" data-i18n="p1.fig7">
-                    FIG 1.7 — SILICON · DAYLIGHT PORCELAIN REFRACTION
+                    图 1.7 · 实时渲染：浅色双模视窗原型
                   </figcaption>
                 </figure>
               </div>
@@ -266,9 +264,9 @@
       <section class="sc-plate-section" id="plate-chromatic-optics" aria-labelledby="p2-title">
         <header class="sc-plate-banner-head">
           <div class="sc-plate-banner-left">
-            <p class="sc-plaque-line" data-i18n="p2.kicker">PLATE II // CHROMATIC PLATES</p>
-            <h2 class="sc-plate-title sc-plate-title-wide" id="p2-title">
-              <span data-i18n="p2.title.pre">十八幅暗明双模</span><em class="sc-serif-italic" data-i18n="p2.title.em">视窗光学底版</em><span data-i18n="p2.title.post"></span>
+            <p class="sc-chapter-mark" data-i18n="p2.kicker">Plate II · 色度与底版</p>
+            <h2 class="sc-plate-title sc-plate-title-wide" id="p2-title" data-i18n="p2.title">
+              十八幅暗明双模视窗光学底版
             </h2>
           </div>
           <p class="sc-plate-prose sc-plate-banner-prose" data-i18n="p2.prose">
@@ -276,56 +274,56 @@
           </p>
         </header>
 
-        <!-- Static Swiss 1px Elemental Chromatic Index -->
+        <!-- Static Chromatic Index -->
         <div class="sc-spectrum-ruler" role="list" aria-label="Elemental Chromatic Calibration">
           <div class="sc-spectrum-cell" role="listitem">
             <span class="sc-spectrum-bar" style="background: linear-gradient(90deg, #0284c7, #38bdf8, #7dd3fc);"></span>
             <div class="sc-spectrum-head">
               <span class="sc-spectrum-sym">1H</span>
-              <span class="sc-plaque-line">486 NM</span>
+              <span class="sc-meta-line">486 nm</span>
             </div>
             <span class="sc-spectrum-name" data-i18n="p2.s1">Hydrogen · 晴空冰蓝</span>
-            <span class="sc-plaque-line">#38BDF8 / #7DD3FC</span>
+            <span class="sc-meta-line">#38BDF8 / #7DD3FC</span>
           </div>
 
           <div class="sc-spectrum-cell" role="listitem">
             <span class="sc-spectrum-bar" style="background: linear-gradient(90deg, #1d4ed8, #3b82f6, #93c5fd);"></span>
             <div class="sc-spectrum-head">
               <span class="sc-spectrum-sym">6C</span>
-              <span class="sc-plaque-line">442 NM</span>
+              <span class="sc-meta-line">442 nm</span>
             </div>
             <span class="sc-spectrum-name" data-i18n="p2.s2">Carbon · 皇家钴蓝</span>
-            <span class="sc-plaque-line">#2563EB / #60A5FA</span>
+            <span class="sc-meta-line">#2563EB / #60A5FA</span>
           </div>
 
           <div class="sc-spectrum-cell" role="listitem">
             <span class="sc-spectrum-bar" style="background: linear-gradient(90deg, #ea580c, #f97316, #fbbf24);"></span>
             <div class="sc-spectrum-head">
               <span class="sc-spectrum-sym">10Ne</span>
-              <span class="sc-plaque-line">594 NM</span>
+              <span class="sc-meta-line">594 nm</span>
             </div>
             <span class="sc-spectrum-name" data-i18n="p2.s3">Neon · 珊瑚流金</span>
-            <span class="sc-plaque-line">#F97316 / #FBBF24</span>
+            <span class="sc-meta-line">#F97316 / #FBBF24</span>
           </div>
 
           <div class="sc-spectrum-cell" role="listitem">
             <span class="sc-spectrum-bar" style="background: linear-gradient(90deg, #6d28d9, #7c3aed, #a78bfa);"></span>
             <div class="sc-spectrum-head">
               <span class="sc-spectrum-sym">18Ar</span>
-              <span class="sc-plaque-line">418 NM</span>
+              <span class="sc-meta-line">418 nm</span>
             </div>
             <span class="sc-spectrum-name" data-i18n="p2.s4">Argon · 电光靛紫</span>
-            <span class="sc-plaque-line">#7C3AED / #A78BFA</span>
+            <span class="sc-meta-line">#7C3AED / #A78BFA</span>
           </div>
 
           <div class="sc-spectrum-cell" role="listitem">
             <span class="sc-spectrum-bar" style="background: linear-gradient(90deg, #7e22ce, #a855f7, #f59e0b);"></span>
             <div class="sc-spectrum-head">
               <span class="sc-spectrum-sym">#0</span>
-              <span class="sc-plaque-line">DUAL-CORE</span>
+              <span class="sc-meta-line">Dual-Core</span>
             </div>
             <span class="sc-spectrum-name" data-i18n="p2.s5">Orch · 星云紫金</span>
-            <span class="sc-plaque-line">#9333EA → #F59E0B</span>
+            <span class="sc-meta-line">#9333EA → #F59E0B</span>
           </div>
         </div>
 
@@ -335,11 +333,11 @@
             <img
               src="./assets/renders/render-07-eight-banners-grid.png"
               alt="Eight Official Spectrum Dual-Mode Full-Bleed Optical Glass Banners (Dark Velvet and Daylight Porcelain)"
-              loading="lazy"
+              decoding="async"
             />
           </div>
           <figcaption class="sc-fig-plaque" data-i18n="p2.fig1">
-            FIG 2.1 — EIGHT CORE SPECTRUM MASTERPLATES · 1600×480 DARK VELVET (LEFT) &amp; DAYLIGHT PORCELAIN (RIGHT)
+            图 2.1 · 八组主题双模底版：1600×480 深色（左）与浅色（右）对照
           </figcaption>
         </figure>
 
@@ -350,11 +348,11 @@
               <img
                 src="./assets/renders/render-10-standby-79au-dark-light.png"
                 alt="79 Au, 31 Ga, and 118 Og Uncarved Matte Raw Quartz Standby Banners"
-                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption class="sc-fig-plaque-stack">
-              <span class="sc-plaque-line" data-i18n="p2.fig2.k">FIG 2.2 — STANDBY ELEMENTS · IOR 1.54 RAW QUARTZ</span>
+              <span class="sc-fig-plaque" data-i18n="p2.fig2.k">图 2.2 · 待机盲键：IOR 1.54 哑光原石底版</span>
               <span class="sc-fig-note" data-i18n="p2.fig2.v">86 颗物理盲键映射 114 种未分配元素，配备深色玄武岩与浅色石膏原石底版及原子量读数。</span>
             </figcaption>
           </figure>
@@ -364,11 +362,11 @@
               <img
                 src="./assets/renders/render-11-orch-sealed-icefog-dark-light.png"
                 alt="Heavy Frosted 16px Ice-Fog Sealed Diffusion Banners for Non-Planner Models"
-                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption class="sc-fig-plaque-stack">
-              <span class="sc-plaque-line" data-i18n="p2.fig3.k">FIG 2.3 — #0 ORCH SEALED · 16PX ICE-FOG DIFFUSION</span>
+              <span class="sc-fig-plaque" data-i18n="p2.fig3.k">图 2.3 · #0 Orch 锁止态：16px 结霜模糊状态</span>
               <span class="sc-fig-note" data-i18n="p2.fig3.v">双核编排锁止态对非规划模型施加 16px 高斯核、48px 防黑边出血与 92% 冷灰去饱和结霜面纱。</span>
             </figcaption>
           </figure>
@@ -380,11 +378,11 @@
             <img
               src="./assets/renders/render-03-obsidian-dark-orch.png"
               alt="PRISM-118 #0 Orch Dual-Core Amethyst-Gold Routing Topology and Ghost Radar"
-              loading="lazy"
+              decoding="async"
             />
           </div>
           <figcaption class="sc-fig-plaque" data-i18n="p2.fig4">
-            FIG 2.4 — AUX-06 MECHANICAL LATCH (-0.135U) · AMETHYST-GOLD DUAL-CORE ROUTING &amp; GHOST RADAR
+            图 2.4 · AUX-06 机械自锁（-0.135U）：双核路由视图与双雷达对照
           </figcaption>
         </figure>
       </section>
@@ -393,56 +391,56 @@
       <section class="sc-plate-section" id="plate-acoustics-engineering" aria-labelledby="p3-title">
         <header class="sc-plate-banner-head">
           <div class="sc-plate-banner-left">
-            <p class="sc-plaque-line" data-i18n="p3.kicker">PLATE III // ACOUSTICS &amp; CONSTRAINTS</p>
-            <h2 class="sc-plate-title sc-plate-title-wide" id="p3-title">
-              <span data-i18n="p3.title.pre">五层程序化声学与</span><em class="sc-serif-italic" data-i18n="p3.title.em">静息零帧</em><span data-i18n="p3.title.post">约束</span>
+            <p class="sc-chapter-mark" data-i18n="p3.kicker">Plate III · 声学与性能约束</p>
+            <h2 class="sc-plate-title sc-plate-title-wide" id="p3-title" data-i18n="p3.title">
+              五层程序化声学与自适应渲染约束
             </h2>
           </div>
           <p class="sc-plate-prose sc-plate-banner-prose" data-i18n="p3.prose">
-            本原型不附带音频素材文件，六类按键声效均通过 Web Audio 五层包络实时合成；渲染管线控制在 5 Programs / 10 Shaders / 4 VAOs / 5 Textures / 1 FBO，静止后停止 rAF 循环。
+            原型零音频采样文件，六类机械声效由独立音频模块实时合成；WebGL2 管线锁定 5 Programs / 10 Shaders / 4 VAOs / 5 Textures / 1 FBO，结合 FrameGlobals UBO、64×32 环境图与 1024/512px 动态阴影，支持 300Hz 瞬态交互并在静息后完全停止 rAF。
           </p>
         </header>
 
-        <!-- Braun / Swiss 1px Technical Specification Grid -->
+        <!-- Braun / Swiss Hairline Technical Specification Grid (Zero Mechanical Index Numbers) -->
         <div class="sc-tech-grid" role="list" aria-label="GPU and Rendering Budgets">
           <div class="sc-tech-cell" role="listitem">
-            <span class="sc-plaque-line">01 // PIPELINE CAP</span>
+            <span class="sc-meta-line" data-i18n="p3.k1">管线封顶与 UBO</span>
             <span class="sc-tech-val">5 / 10 / 4</span>
-            <span class="sc-tech-desc" data-i18n="p3.m1">5 Programs · 10 Shaders · 4 VAOs</span>
+            <span class="sc-tech-desc" data-i18n="p3.m1">5 Programs · 10 Shaders · 4 VAOs · FrameGlobals UBO</span>
           </div>
           <div class="sc-tech-cell" role="listitem">
-            <span class="sc-plaque-line">02 // VRAM &amp; SHADOW</span>
-            <span class="sc-tech-val">5 TEX + 1 FBO</span>
-            <span class="sc-tech-desc" data-i18n="p3.m2">5 Textures · 2048px Shadow Map</span>
+            <span class="sc-meta-line" data-i18n="p3.k2">动态阴影与环境图</span>
+            <span class="sc-tech-val">1024 / 512px</span>
+            <span class="sc-tech-desc" data-i18n="p3.m2">5 Textures · 1 FBO · 64×32 RGB8 环境反射图</span>
           </div>
           <div class="sc-tech-cell" role="listitem">
-            <span class="sc-plaque-line">03 // IDLE POWER</span>
-            <span class="sc-tech-val">0.0 FPS</span>
-            <span class="sc-tech-desc" data-i18n="p3.m3">运动收敛后 100% 停止 rAF 循环</span>
+            <span class="sc-meta-line" data-i18n="p3.k3">瞬态与静息帧率</span>
+            <span class="sc-tech-val">300Hz → 0.0</span>
+            <span class="sc-tech-desc" data-i18n="p3.m3">瞬态解锁 300Hz · 巡航/Eco 60fps · 静止即停机</span>
           </div>
           <div class="sc-tech-cell" role="listitem">
-            <span class="sc-plaque-line">04 // HOLD PRE-WARM</span>
-            <span class="sc-tech-val">120 MS</span>
-            <span class="sc-tech-desc" data-i18n="p3.m4">冷启动 0 解码 · 长按无感预热</span>
+            <span class="sc-meta-line" data-i18n="p3.k4">长按静默预热</span>
+            <span class="sc-tech-val">120 ms</span>
+            <span class="sc-tech-desc" data-i18n="p3.m4">冷启动 0 解码 · 长按无感预热底版与颗粒</span>
           </div>
           <div class="sc-tech-cell" role="listitem">
-            <span class="sc-plaque-line">05 // DUAL EVICTION</span>
-            <span class="sc-tech-val">90 S</span>
-            <span class="sc-tech-desc" data-i18n="p3.m5">闲置自动回收壁纸与噪点池</span>
+            <span class="sc-meta-line" data-i18n="p3.k5">闲置缓存回收</span>
+            <span class="sc-tech-val">90 s</span>
+            <span class="sc-tech-desc" data-i18n="p3.m5">收起满 90s 自动释放底版、噪点池与字符图集</span>
           </div>
           <div class="sc-tech-cell" role="listitem">
-            <span class="sc-plaque-line">06 // HOT-PATH DOM</span>
-            <span class="sc-tech-val">0 REFLOW</span>
-            <span class="sc-tech-desc" data-i18n="p3.m6">悬停与拖拽全程读写分离</span>
+            <span class="sc-meta-line" data-i18n="p3.k6">热路径零回流</span>
+            <span class="sc-tech-val">0 Reflow</span>
+            <span class="sc-tech-desc" data-i18n="p3.m6">Read-then-Write 展开 · rAF 合批与 16ms 矩形缓存</span>
           </div>
         </div>
 
-        <!-- Technical Manual Acoustic Spectrum & 1px Audition Marks -->
+        <!-- Technical Manual Acoustic Spectrum & Audition Rows -->
         <div class="sc-acoustic-manual">
           <div class="sc-acoustic-diagram">
             <div class="sc-diagram-header">
-              <span class="sc-plaque-line" data-i18n="p3.diagTitle">FIG 3.1 — FIVE-LAYER PROCEDURAL ENVELOPE PROFILE (LOG HZ)</span>
-              <span class="sc-plaque-line">WEB AUDIO API · 0 SAMPLES</span>
+              <span class="sc-meta-line" data-i18n="p3.diagTitle">图 3.1 · 五层程序化声学包络剖面（对数频率标尺）</span>
+              <span class="sc-meta-line">Web Audio API · 0 Samples</span>
             </div>
             <svg
               class="sc-spectrum-svg"
@@ -480,69 +478,63 @@
                 class="sc-svg-curve sc-svg-curve-dashed"
                 d="M340 186 C400 184, 436 124, 478 124 C520 124, 558 176, 610 186"
               />
-              <!-- Peak Calibration Ticks (Zero Grid-Rule Overlap) -->
+              <!-- Peak Calibration Ticks -->
               <g class="sc-svg-ticks">
                 <circle cx="128" cy="56" r="3" />
                 <circle cx="238" cy="76" r="3" />
                 <circle cx="352" cy="108" r="3" />
                 <circle cx="478" cy="124" r="3" />
-                <text x="128" y="46" text-anchor="middle">L1 PORON 54–142Hz</text>
+                <text x="128" y="46" text-anchor="middle">L1 Poron 54–142Hz</text>
                 <text x="238" y="66" text-anchor="middle">L2 PBT 190–340Hz</text>
                 <text x="352" y="98" text-anchor="middle">L3 POM 520–780Hz</text>
-                <text x="478" y="114" text-anchor="middle">L4–5 PLATE 1.1–1.7kHz</text>
+                <text x="478" y="114" text-anchor="middle">L4–5 Plate 1.1–1.7kHz</text>
               </g>
               <!-- Axis Labels -->
               <g class="sc-svg-axis">
-                <text x="36" y="216">50 HZ</text>
-                <text x="152" y="216">120 HZ</text>
-                <text x="268" y="216">280 HZ</text>
-                <text x="384" y="216">640 HZ</text>
-                <text x="500" y="216">1.2 KHZ</text>
-                <text x="616" y="216" text-anchor="end">2.4 KHZ</text>
+                <text x="36" y="216">50 Hz</text>
+                <text x="152" y="216">120 Hz</text>
+                <text x="268" y="216">280 Hz</text>
+                <text x="384" y="216">640 Hz</text>
+                <text x="500" y="216">1.2 kHz</text>
+                <text x="616" y="216" text-anchor="end">2.4 kHz</text>
               </g>
             </svg>
           </div>
 
           <div class="sc-audition-list" role="group" aria-label="Procedural Acoustic Audition Points">
             <div class="sc-diagram-header">
-              <span class="sc-plaque-line" data-i18n="p3.audTitle">AUDITION POINTS · CLICK LINE TO SYNTHESIZE</span>
-              <span class="sc-plaque-line" id="sc-audio-status">READY</span>
+              <span class="sc-meta-line" data-i18n="p3.audTitle">声学试听点 · 点击任意行实时合成</span>
+              <span class="sc-meta-line" id="sc-audio-status">Ready</span>
             </div>
 
             <button type="button" class="sc-audition-row" data-sound-kind="lift">
-              <span class="sc-aud-idx">01</span>
               <span class="sc-aud-name" data-i18n="p3.s1">磁悬浮陶瓷提拉 · Lift</span>
-              <span class="sc-aud-spec">165→310 HZ</span>
+              <span class="sc-aud-spec">155–210 Hz</span>
               <span class="sc-aud-cue" aria-hidden="true">▸</span>
             </button>
             <button type="button" class="sc-audition-row" data-sound-kind="step">
-              <span class="sc-aud-idx">02</span>
               <span class="sc-aud-name" data-i18n="p3.s2">冰翡玉档位步进 · Step</span>
-              <span class="sc-aud-spec">340→210 HZ</span>
+              <span class="sc-aud-spec">308–224 Hz</span>
               <span class="sc-aud-cue" aria-hidden="true">▸</span>
             </button>
             <button type="button" class="sc-audition-row" data-sound-kind="slam">
-              <span class="sc-aud-idx">03</span>
-              <span class="sc-aud-name" data-i18n="p3.s3">115ms 确认触底麻将音 · Slam</span>
-              <span class="sc-aud-spec">142→54 HZ</span>
+              <span class="sc-aud-name" data-i18n="p3.s3">115ms 确认触底低频声 · Slam</span>
+              <span class="sc-aud-spec">145–68 Hz</span>
               <span class="sc-aud-cue" aria-hidden="true">▸</span>
             </button>
             <button type="button" class="sc-audition-row" data-sound-kind="ratchet">
-              <span class="sc-aud-idx">04</span>
               <span class="sc-aud-name" data-i18n="p3.s4">钻石滚花旋钮棘轮 · Ratchet</span>
-              <span class="sc-aud-spec">780 HZ DETENT</span>
+              <span class="sc-aud-spec">1180 Hz Detent</span>
               <span class="sc-aud-cue" aria-hidden="true">▸</span>
             </button>
             <button type="button" class="sc-audition-row" data-sound-kind="latch">
-              <span class="sc-aud-idx">05</span>
               <span class="sc-aud-name" data-i18n="p3.s5">#0 Orch 双段机械自锁 · Latch</span>
-              <span class="sc-aud-spec">-0.135U CATCH</span>
+              <span class="sc-aud-spec">-0.135U Catch</span>
               <span class="sc-aud-cue" aria-hidden="true">▸</span>
             </button>
             <button type="button" class="sc-audition-row" data-sound-kind="blind">
-              <span class="sc-aud-idx">06</span>
               <span class="sc-aud-name" data-i18n="p3.s6">待机盲键阻尼轻叩 · Blind</span>
-              <span class="sc-aud-spec">190→96 HZ</span>
+              <span class="sc-aud-spec">164–92 Hz</span>
               <span class="sc-aud-cue" aria-hidden="true">▸</span>
             </button>
           </div>
@@ -554,9 +546,9 @@
         <div class="sc-spread-grid">
           <aside class="sc-marginalia">
             <div class="sc-marginalia-sticky">
-              <p class="sc-plaque-line" data-i18n="p4.kicker">PLATE IV // IN-FLOW INTERACTION</p>
+              <p class="sc-chapter-mark" data-i18n="p4.kicker">Plate IV · 内嵌流交互</p>
               <h2 class="sc-plate-title" id="p4-title">
-                <span data-i18n="p4.title.pre">非模态内嵌</span><br class="sc-zh-br" /><em class="sc-serif-italic" data-i18n="p4.title.em">交互原型</em><span data-i18n="p4.title.post"></span>
+                <span data-i18n="p4.title.pre">非模态内嵌</span><br class="sc-zh-br" /><span data-i18n="p4.title.post">交互原型</span>
               </h2>
               <p class="sc-plate-prose" data-i18n="p4.prose">
                 页面仅保留顶部一处常驻 WebGL2 实例。下方游标输入条用于演示展开态下打字不拦截快捷键、短按菜单、点击 1px 微铭牌及 420ms 长按径向环的联动关系。
@@ -567,11 +559,11 @@
                   <img
                     src="./assets/renders/render-09-composer-badges-4themes.png"
                     alt="Theme-Native 1px Hairline Mini-Badges Across All Four Chassis Themes"
-                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <figcaption class="sc-fig-plaque" data-i18n="p4.fig1">
-                  FIG 4.1 — 四套主题下的 1PX 发丝微铭牌对照
+                  图 4.1 · 四套主题下的 1px 发丝微铭牌对照
                 </figcaption>
               </figure>
             </div>
@@ -582,15 +574,15 @@
               <!-- Live Single-GPU Telemetry Receipt -->
               <div class="sc-sandbox-status" role="status" aria-live="polite">
                 <div class="sc-sandbox-status-left">
-                  <span class="sc-plaque-tag" id="sc-feed-tag">GPU 01/01 · 实时同步就绪</span>
+                  <span class="sc-plaque-tag" id="sc-feed-tag">单实例 GPU · 实时同步就绪</span>
                   <span class="sc-sandbox-msg" id="sc-feed-msg">
                     在下方游标线敲击 f、r、空格并按 Enter 测试零拦截；点微铭牌或长按 420ms 唤出径向环。
                   </span>
                 </div>
-                <span class="sc-plaque-line" id="sc-feed-telemetry">139K / 512K (27%) · KV 94%</span>
+                <span class="sc-meta-line" id="sc-feed-telemetry">139K / 512K (27%) · KV 94%</span>
               </div>
 
-              <!-- Frameless 1px Cursor-Line Composer (data-prism-composer="1") -->
+              <!-- Frameless Cursor-Line Composer (data-prism-composer="1") -->
               <div class="sc-cursor-composer" id="sc-composer-card" data-prism-composer="1">
                 <div class="sc-cursor-line-wrap">
                   <span class="sc-cursor-prompt" aria-hidden="true">›</span>
@@ -603,7 +595,7 @@
                     data-i18n-placeholder="p4.placeholder"
                     placeholder="直接在此输入文字（试试敲击 f、r、空格并按 Enter，绝不触发全屏或关闭控制台）..."
                   />
-                  <button type="button" id="sc-send-btn" class="sc-hairline-action" data-i18n="p4.send">DISPATCH ↵</button>
+                  <button type="button" id="sc-send-btn" class="sc-hairline-action" data-i18n="p4.send">发送 ↵</button>
                 </div>
 
                 <div class="sc-sandbox-controls">
@@ -629,32 +621,32 @@
                     </button>
 
                     <div class="sc-quick-menu" id="sc-quick-menu" data-prism-menu="1" role="menu">
-                      <div class="sc-quick-menu-hdr" data-i18n="p4.quickHdr">SHORT-CLICK MENU · HOLD 420MS FOR RADIAL RING</div>
+                      <div class="sc-quick-menu-hdr" data-i18n="p4.quickHdr">短按快速菜单 · 点 [6C] 微铭牌或长按 420ms 唤出径向环</div>
                       <div id="sc-quick-items"></div>
                     </div>
                   </div>
 
                   <!-- Smooth Focus & Sync Controls to the Single Hero WebGL2 Instance -->
                   <div class="sc-sandbox-sync-group">
-                    <button type="button" class="sc-hairline-action" id="btn-sandbox-orch" data-active="0" data-i18n="p4.orchBtn">#0 ORCH</button>
-                    <button type="button" class="sc-hairline-action" id="btn-sandbox-orbit" data-i18n="p4.orbitBtn">360° ORBIT</button>
+                    <button type="button" class="sc-hairline-action" id="btn-sandbox-orch" data-active="0" data-i18n="p4.orchBtn">#0 Orch</button>
+                    <button type="button" class="sc-hairline-action" id="btn-sandbox-orbit" data-i18n="p4.orbitBtn">360° 检视</button>
                     <button type="button" class="sc-hairline-action sc-hairline-primary" id="btn-sandbox-focus" data-i18n="p4.focusBtn">↑ 聚焦 3D 展台</button>
                   </div>
                 </div>
               </div>
 
-              <!-- Protocol Checklist Strip -->
+              <!-- Protocol Checklist Strip (Semantic Labels, Zero Index Numbers) -->
               <div class="sc-protocol-strip">
                 <div class="sc-protocol-cell">
-                  <span class="sc-plaque-line">01 // SHORT CLICK (&lt;110MS)</span>
+                  <span class="sc-meta-line" data-i18n="p4.p1k">短按菜单（&lt;110ms）</span>
                   <span class="sc-protocol-note" data-i18n="p4.p1">轻点模型名弹出快速菜单，不中断当前输入语境。</span>
                 </div>
                 <div class="sc-protocol-cell">
-                  <span class="sc-plaque-line">02 // 1PX MINI-BADGE</span>
+                  <span class="sc-meta-line" data-i18n="p4.p2k">1px 发丝微铭牌</span>
                   <span class="sc-protocol-note" data-i18n="p4.p2">轻点 [6C] 发丝微铭牌直接切换唯一 3D 控制台状态。</span>
                 </div>
                 <div class="sc-protocol-cell">
-                  <span class="sc-plaque-line">03 // 420MS HOLD RING</span>
+                  <span class="sc-meta-line" data-i18n="p4.p3k">420ms 径向长按环</span>
                   <span class="sc-protocol-note" data-i18n="p4.p3">按住触发器 110ms 浮现径向环、120ms 静默预热、420ms 响应。</span>
                 </div>
               </div>
@@ -669,17 +661,17 @@
   <footer class="sc-colophon" id="colophon" role="contentinfo">
     <div class="sc-colophon-inner">
       <div class="sc-colophon-imprint">
-        <p class="sc-plaque-line" data-i18n="col.kicker">ARCHIVE NOTE // DESIGN STUDY</p>
+        <p class="sc-chapter-mark" data-i18n="col.kicker">Colophon · 设计稿归档</p>
         <p class="sc-colophon-statement" data-i18n="col.statement">
           PRISM-118 交互与光学设计稿归档 · 仅作视觉与原型展示
         </p>
       </div>
 
-      <!-- Swiss 1px Summary Spec Table -->
+      <!-- Summary Spec Table -->
       <div class="sc-colophon-spec-bar" role="list" aria-label="Prototype Constraints">
-        <div class="sc-colophon-spec-cell" role="listitem" data-i18n="col.s1">5 GLSL Programs · 0.0 fps 静止休眠</div>
-        <div class="sc-colophon-spec-cell" role="listitem" data-i18n="col.s2">18 幅暗明双模视窗底版</div>
-        <div class="sc-colophon-spec-cell" role="listitem" data-i18n="col.s3">零外部 3D 依赖 · 零同步回流</div>
+        <div class="sc-colophon-spec-cell" role="listitem" data-i18n="col.s1">5 GLSL Programs · 300Hz 瞬态 / 0.0 fps 休眠</div>
+        <div class="sc-colophon-spec-cell" role="listitem" data-i18n="col.s2">18 幅双模视窗底版 · 1024/512px 动态阴影</div>
+        <div class="sc-colophon-spec-cell" role="listitem" data-i18n="col.s3">7 份零依赖原生模块 · 零同步回流</div>
       </div>
 
       <!-- Collapsed-by-Default Expandable Prototype Reference Drawer -->
@@ -698,9 +690,9 @@
         <div class="sc-sdk-panel" id="sc-sdk-panel" hidden>
           <div class="sc-sdk-panel-grid">
             <div class="sc-sdk-notes">
-              <p class="sc-plaque-line" data-i18n="col.sdkKicker">PROTOTYPE MODULES · ZERO EXTERNAL 3D LIBS · CLEAN TEARDOWN</p>
+              <p class="sc-meta-line" data-i18n="col.sdkKicker">7 份解耦原生模块 · 零外部 3D 依赖 · 对称卸载</p>
               <p class="sc-plate-prose" data-i18n="col.sdkDesc">
-                本页交互原型由四份无外部 3D 依赖的原生脚本（pbr-grain-assets / oled-cyber-screen / keyboard-3d-gl / periodic-console）驱动，仅用于实时设计稿预览。
+                本页交互原型由七份无外部 3D 依赖的原生脚本（pbr-grain-assets / audio-fx / model-catalog / oled-cyber-screen / keyboard-3d-gl / bento-ui / periodic-console）解耦驱动，仅用于实时设计稿预览。
               </p>
               <div class="sc-sdk-doc-links">
                 <a class="sc-hairline-action" href="./docs/DESIGN-WHITEPAPER.zh-CN.md" data-i18n="col.wpZh">设计笔记（中文）</a>
@@ -714,8 +706,9 @@
   models: PrismPeriodicConsole.DEFAULT_MODELS,
   orchestratorPlanners: plannersWhitelist,
   telemetry: { usedTokens: 142336, maxTokens: 524288, tps: 148 },
-  theme: 'obsidian', // obsidian | warm | crystal | alabaster
-  accent: 'follow',  // follow | cobalt | iris | amber | mono
+  theme: 'obsidian',          // obsidian | warm | crystal | alabaster
+  accent: 'follow',           // follow | cobalt | iris | amber | mono
+  performanceMode: 'balanced', // balanced (300Hz/1024px) | performance (60fps/512px)
   autoOpen: true,
   onSelectModel(model, meta) { /* preview sync */ },
   onSelectEffort(effort, model) { /* tier update */ },
@@ -727,7 +720,7 @@
 
       <!-- Subtle Minimalist Footer Fine Print -->
       <div class="sc-colophon-legal">
-        <span class="sc-colophon-micro-credit" data-i18n="col.legal">© 2026 RMvdesi · All Rights Reserved · 仅作设计稿展示</span>
+        <span class="sc-colophon-micro-credit sc-quiet-meta" data-i18n="col.legal">© 2026 RMvdesi · All Rights Reserved · 仅作设计稿展示</span>
         <div class="sc-colophon-links">
           <a href="./docs/DESIGN-WHITEPAPER.zh-CN.md" data-i18n="col.linkWpZh">设计笔记</a>
           <a href="./docs/DESIGN-WHITEPAPER.md" data-i18n="col.linkWpEn">Design Notes</a>
@@ -743,34 +736,34 @@
   <aside class="sc-atelier-dock" id="sc-atelier-dock" data-open="0" aria-label="Atelier Light Optical Dimmer">
     <div class="sc-dimmer-panel" id="sc-dimmer-panel" role="dialog" aria-label="Atelier Light Controls" hidden>
       <div class="sc-dimmer-head">
-        <span class="sc-plaque-line">ATELIER LIGHT // CALIBRATION</span>
+        <span class="sc-meta-line">Atelier Light · Calibration</span>
         <button type="button" class="sc-dimmer-close" id="btn-dimmer-close" aria-label="Close Atelier Light">×</button>
       </div>
 
       <div class="sc-dimmer-section">
-        <span class="sc-plaque-line" data-i18n="dim.themeLbl">01 // GALLERY ATMOSPHERE &amp; CHASSIS</span>
+        <span class="sc-meta-line" data-i18n="dim.themeLbl">画廊氛围与机身材质</span>
         <div class="sc-dimmer-grid-2" role="group" aria-label="Chassis Theme">
           <button type="button" class="sc-dimmer-opt" data-kit-btn="obsidian" data-active="1">
-            <span class="sc-swatch-chip" style="background: #0a0a0b; border-color: rgba(242,239,233,0.4);"></span>
+            <span class="sc-swatch-chip" style="background: #0a0a0b; color: rgba(242,239,233,0.48);"></span>
             <span>Obsidian</span>
           </button>
           <button type="button" class="sc-dimmer-opt" data-kit-btn="warm" data-active="0">
-            <span class="sc-swatch-chip" style="background: #241b15; border-color: rgba(236,196,144,0.5);"></span>
+            <span class="sc-swatch-chip" style="background: #241b15; color: rgba(236,196,144,0.56);"></span>
             <span>Warm</span>
           </button>
           <button type="button" class="sc-dimmer-opt" data-kit-btn="crystal" data-active="0">
-            <span class="sc-swatch-chip" style="background: #eef2f7; border-color: rgba(18,21,26,0.35);"></span>
+            <span class="sc-swatch-chip" style="background: #eef2f7; color: rgba(18,21,26,0.4);"></span>
             <span>Crystal</span>
           </button>
           <button type="button" class="sc-dimmer-opt" data-kit-btn="alabaster" data-active="0">
-            <span class="sc-swatch-chip" style="background: #f6f4ef; border-color: rgba(20,20,19,0.4);"></span>
+            <span class="sc-swatch-chip" style="background: #f6f4ef; color: rgba(20,20,19,0.45);"></span>
             <span>Alabaster</span>
           </button>
         </div>
       </div>
 
       <div class="sc-dimmer-section">
-        <span class="sc-plaque-line" data-i18n="dim.accentLbl">02 // OPTICAL RIM ACCENT</span>
+        <span class="sc-meta-line" data-i18n="dim.accentLbl">光学边缘追光色调</span>
         <div class="sc-dimmer-accent-row" role="group" aria-label="Optical Accent">
           <button type="button" class="sc-dimmer-accent" data-accent-btn="follow" data-active="1">Follow</button>
           <button type="button" class="sc-dimmer-accent" data-accent-btn="cobalt" data-active="0">Cobalt</button>
@@ -781,9 +774,17 @@
       </div>
 
       <div class="sc-dimmer-section">
-        <span class="sc-plaque-line" data-i18n="dim.stageLbl">03 // ARTIFACT STAGE CONTROLS</span>
+        <span class="sc-meta-line" data-i18n="dim.perfLbl">渲染与动态阴影档位</span>
+        <div class="sc-dimmer-grid-2" role="group" aria-label="Performance Mode">
+          <button type="button" class="sc-dimmer-opt" data-perf-btn="balanced" data-active="1" data-i18n="dim.perfBalanced">Balanced · 300Hz</button>
+          <button type="button" class="sc-dimmer-opt" data-perf-btn="performance" data-active="0" data-i18n="dim.perfEco">Eco · 60fps · 512px</button>
+        </div>
+      </div>
+
+      <div class="sc-dimmer-section">
+        <span class="sc-meta-line" data-i18n="dim.stageLbl">实时原型操作</span>
         <div class="sc-dimmer-grid-2">
-          <button type="button" class="sc-dimmer-opt" id="btn-stage-dock" data-active="1" data-i18n="dim.dock">内嵌展台</button>
+          <button type="button" class="sc-dimmer-opt" id="btn-stage-dock" data-active="1" data-i18n="dim.dock">内嵌视图</button>
           <button type="button" class="sc-dimmer-opt" id="btn-stage-full" data-active="0" data-i18n="dim.full">360° 全屏 (F)</button>
           <button type="button" class="sc-dimmer-opt" id="btn-nav-tour" data-active="0" data-i18n="dim.tour">3D 巡礼</button>
           <button type="button" class="sc-dimmer-opt" id="btn-hero-orch" data-active="0" data-i18n="dim.orch">#0 Orch 双核</button>
@@ -791,7 +792,7 @@
           <button type="button" class="sc-dimmer-opt sc-narrow-only-opt" id="btn-hero-flip" data-active="0" data-i18n="dim.flip">翻转左翼卡</button>
           <button type="button" class="sc-dimmer-opt" id="btn-hero-telemetry" data-active="0">512K: 27%</button>
         </div>
-        <button type="button" class="sc-dimmer-wide" id="btn-hero-toggle-dock" data-i18n="dim.toggleDock">收起 / 展开 3D 展台</button>
+        <button type="button" class="sc-dimmer-wide" id="btn-hero-toggle-dock" data-i18n="dim.toggleDock">收起 / 展开 3D 原型</button>
       </div>
     </div>
 
@@ -806,22 +807,25 @@
       <span class="sc-atelier-label" aria-hidden="true">Atelier Light</span>
       <span class="sc-aperture-ring" aria-hidden="true">
         <svg viewBox="0 0 36 36" width="36" height="36" fill="none">
-          <circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.48" />
-          <circle cx="18" cy="18" r="11" stroke="currentColor" stroke-width="0.8" stroke-opacity="0.32" />
-          <circle cx="18" cy="18" r="4.2" fill="currentColor" fill-opacity="0.86" />
-          <line x1="18" y1="1.5" x2="18" y2="7" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55" />
-          <line x1="18" y1="29" x2="18" y2="34.5" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55" />
-          <line x1="1.5" y1="18" x2="7" y2="18" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55" />
-          <line x1="29" y1="18" x2="34.5" y2="18" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.55" />
+          <circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.52" />
+          <circle cx="18" cy="18" r="11" stroke="currentColor" stroke-width="0.8" stroke-opacity="0.36" />
+          <circle cx="18" cy="18" r="4.2" fill="currentColor" fill-opacity="0.88" />
+          <line x1="18" y1="1.5" x2="18" y2="7" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.58" />
+          <line x1="18" y1="29" x2="18" y2="34.5" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.58" />
+          <line x1="1.5" y1="18" x2="7" y2="18" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.58" />
+          <line x1="29" y1="18" x2="34.5" y2="18" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.58" />
         </svg>
       </span>
     </button>
   </aside>
 
-  <!-- Pure Hand-Written WebGL2 PBR & Console Engine (Zero External Dependencies) -->
+  <!-- 7 Purified Hand-Written WebGL2 PBR & Console Modules (Zero External 3D Dependencies) -->
   <script src="./src/pbr-grain-assets.js"></script>
+  <script src="./src/audio-fx.js"></script>
+  <script src="./src/model-catalog.js"></script>
   <script src="./src/oled-cyber-screen.js"></script>
   <script src="./src/keyboard-3d-gl.js"></script>
+  <script src="./src/bento-ui.js"></script>
   <script src="./src/periodic-console.js"></script>
   <script src="./showcase/showcase.js"></script>
 </body>

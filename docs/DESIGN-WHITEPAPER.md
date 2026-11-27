@@ -90,13 +90,13 @@ The 3D CNC chassis keeps laser engravings strictly limited to hardware codes (**
 ### 3.2 Strict `5 / 10 / 4 / 5 / 1` GPU Resource Budget
 
 Engineered without Three.js or external WebGL wrappers, the renderer enforces a hard GPU ceiling verified by automated unit tests:
-- **`5` WebGLPrograms / `10` WebGLShaders**: CNC step-bezel chassis (`progChassis`), instanced sea-glass / PBT keycaps (`progKeycap`), anti-bleed curved glass OLED (`progOled`), air-gap octahedral micro-crystals & knurled hardware (`progSolid`), and orthographic depth shadows (`progShadow`);
-- **`4` VAOs** & **`5` VRAM Textures + `1` `2048×2048` Shadow FBO**:
+- **`5` WebGLPrograms / `10` WebGLShaders** sharing a `FrameGlobals` UBO (`std140` per-frame camera/lighting block): CNC step-bezel chassis (`progChassis`), instanced sea-glass / PBT keycaps (`progKeycap`), anti-bleed curved glass OLED (`progOled`), air-gap octahedral micro-crystals & knurled hardware (`progSolid`), and orthographic depth shadows (`progShadow`);
+- **`4` VAOs** & **`5` VRAM Textures + `1` `1024 / 512px` Dynamic Shadow FBO** (switchable between `Balanced · 300Hz / 1024px` and `Eco · 60fps / 512px`, with `66ms` orbit-drag shadow throttling, Vogel-disk PCF lookup, and FNV-1a scene-signature shadow skipping):
   1. `128×128 RG8` dual-channel procedural PBT & anodized aluminum micro-grain normals;
-  2. `128×64 RGB8` studio softbox metal environment reflection map (`24,576 B`);
-  3. Crisp vector-rasterized keycap legend atlas;
+  2. `64×32 RGB8` zero-trigonometry studio softbox metal environment reflection map (`6,144 B`);
+  3. Crisp `Path2D`-cached keycap legend atlas (`evictLegendAtlasCache()` on idle);
   4. `1600×480` dual-mode OLED key-art texture;
-  5. `2048×2048` soft-shadow depth map.
+  5. `1024×1024` (`512×512` Eco) soft-shadow depth map.
 
 ---
 
@@ -123,17 +123,17 @@ Engineered without Three.js or external WebGL wrappers, the renderer enforces a 
 ## 6. 5-Layer Procedural Web Audio Acoustics & 0fps Green Lifecycle
 
 - **Zero Audio Samples**: Six distinct mechanical acoustic signatures (Magnetic Ceramic Lift, Ice-Jade Effort Step, `115ms` Bottom-Out Poron Thock Slam, Diamond-Knurled Rotary Ratchet, `#0 Orch` Dual-Stage Latch, and Matte Blind-Key Fidget) are synthesized procedurally via 5 layered Web Audio oscillators and filtered noise bursts.
-- **Cold-Start Zero Overhead → `120ms` Pre-Warm → `0fps` Idle → `90s` Dual Eviction**:
+- **Cold-Start Zero Overhead → `120ms` Pre-Warm → `300Hz` Burst / `0fps` Idle → `90s` Eviction**:
   - `0` WebGL contexts and `0` decoded bitmaps prior to invocation;
   - Silent asset pre-warm at `120ms` pointer hold;
-  - Strict `< 180`-frame convergence to `0fps` (halting `requestAnimationFrame` completely);
-  - Automatic `90s` post-close eviction of both decoded OLED wallpapers and the `88 KB` PBR `TypedArray` grain cache, plus `0` synchronous layout reflows on hover/drag hot paths.
+  - Zero-GC `Float64Array` exact second-order springs unlock native `300Hz` during transient motion, step back to `60fps` during steady zero-G crystal float (or `Eco 60fps`), and converge strictly within `< 180` frames to `0fps` (halting `requestAnimationFrame` completely);
+  - Automatic `90s` post-close eviction of decoded OLED wallpapers, PBR `TypedArray` grain cache, and the `Path2D` legend atlas cache, paired with Read-then-Write `open()`, rAF-batched `ResizeObserver`, `deferRender` coalescing, and `0` synchronous layout reflows on hover/drag hot paths.
 
 ---
 
 ## 7. Prototype Structure & Attribution Note
 
-The four scripts in `src/` (`pbr-grain-assets.js`, `oled-cyber-screen.js`, `keyboard-3d-gl.js`, `periodic-console.js`) drive the live design preview (`PrismPeriodicConsole.mount(options)`) with zero external 3D dependencies and symmetric `destroy()` cleanup.
+Seven decoupled zero-dependency scripts in `src/` (`pbr-grain-assets.js`, `audio-fx.js`, `model-catalog.js`, `oled-cyber-screen.js`, `keyboard-3d-gl.js`, `bento-ui.js`, `periodic-console.js`) drive the live design preview (`PrismPeriodicConsole.mount(options)` + `setPerformanceMode('balanced' | 'performance')`) with symmetric `destroy()` cleanup.
 
 **Attribution & License**:  
 This repository archives the `PRISM-118 · Periodic Console` design study created by RMvdesi for Obsidian Prism (`© 2026 RMvdesi · All Rights Reserved`). Online viewing, local demo inspection, and attributed editorial references are permitted; unauthorized copying, redistribution, commercial use, or derivative porting is prohibited. See [LICENSE](../LICENSE).

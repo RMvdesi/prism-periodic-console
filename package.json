@@ -1,8 +1,8 @@
 {
   "name": "prism-periodic-console",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "PRISM-118 · Periodic Console design study archive and interactive WebGL2 prototype (All Rights Reserved).",
+  "description": "PRISM-118 · Periodic Console design study archive and 7-module interactive WebGL2 prototype (All Rights Reserved).",
   "license": "SEE LICENSE IN LICENSE",
   "author": {
     "name": "RMvdesi",

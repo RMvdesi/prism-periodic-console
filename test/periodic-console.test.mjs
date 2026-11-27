@@ -17,8 +17,11 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 const SRC_DIR = path.join(ROOT_DIR, 'src');
 const GRAIN_FILE = path.join(SRC_DIR, 'pbr-grain-assets.js');
+const AUDIO_FILE = path.join(SRC_DIR, 'audio-fx.js');
+const CATALOG_FILE = path.join(SRC_DIR, 'model-catalog.js');
 const OLED_FILE = path.join(SRC_DIR, 'oled-cyber-screen.js');
 const KB3D_FILE = path.join(SRC_DIR, 'keyboard-3d-gl.js');
+const BENTO_FILE = path.join(SRC_DIR, 'bento-ui.js');
 const CONSOLE_FILE = path.join(SRC_DIR, 'periodic-console.js');
 
 const require = createRequire(import.meta.url);
@@ -113,6 +116,7 @@ function createMockWebGL2Context({ failFbo = false } = {}) {
   const shadowTexAllocations = [];
   const rg8TexAllocations = [];
   const rgb8TexAllocations = [];
+  const uboBindings = [];
 
   return {
     VERTEX_SHADER: 0x8b31,
@@ -121,8 +125,11 @@ function createMockWebGL2Context({ failFbo = false } = {}) {
     LINK_STATUS: 0x8b82,
     ARRAY_BUFFER: 0x8892,
     ELEMENT_ARRAY_BUFFER: 0x8893,
+    UNIFORM_BUFFER: 0x8a11,
+    INVALID_INDEX: 0xffffffff,
     STATIC_DRAW: 0x88e4,
     DYNAMIC_DRAW: 0x88e8,
+    STREAM_DRAW: 0x88e0,
     FLOAT: 0x1406,
     UNSIGNED_SHORT: 0x1403,
     UNSIGNED_INT: 0x1405,
@@ -192,6 +199,13 @@ function createMockWebGL2Context({ failFbo = false } = {}) {
       return b;
     },
     bindBuffer() {},
+    bindBufferBase(_target, index, buf) {
+      uboBindings.push({ index, buf });
+    },
+    getUniformBlockIndex(_p, name) {
+      return name === 'FrameGlobals' ? 0 : 0xffffffff;
+    },
+    uniformBlockBinding() {},
     bufferData() {},
     bufferSubData() {},
     deleteBuffer(b) {
@@ -217,7 +231,7 @@ function createMockWebGL2Context({ failFbo = false } = {}) {
     bindTexture() {},
     pixelStorei() {},
     texImage2D(_target, _level, internalformat, width, height, _border, format, _type, pixels) {
-      if (internalformat === 0x81a6 || internalformat === 0x81a5 || (width === 2048 && height === 2048)) {
+      if (internalformat === 0x81a6 || internalformat === 0x81a5 || format === 0x1902) {
         shadowTexAllocations.push({ internalformat, width, height });
       }
       if (internalformat === 0x822b || format === 0x8227) {
@@ -285,7 +299,7 @@ function createMockWebGL2Context({ failFbo = false } = {}) {
       drawCalls += 1;
     },
     _stats() {
-      return { created, deleted, loseContextCalls, drawCalls, shadowTexAllocations, rg8TexAllocations, rgb8TexAllocations };
+      return { created, deleted, loseContextCalls, drawCalls, shadowTexAllocations, rg8TexAllocations, rgb8TexAllocations, uboBindings };
     },
   };
 }
@@ -868,6 +882,9 @@ function createExhibitionSandbox({
     requestAnimationFrame: fakeRaf,
     cancelAnimationFrame: fakeCancelRaf,
     Float32Array,
+    Float64Array,
+    Int32Array,
+    Uint32Array,
     Uint16Array,
     Uint8Array,
     Map,
@@ -917,13 +934,19 @@ function createExhibitionSandbox({
 
 function loadAllModulesInSandbox(env) {
   vm.runInContext(fs.readFileSync(GRAIN_FILE, 'utf8'), env.sandbox);
+  vm.runInContext(fs.readFileSync(AUDIO_FILE, 'utf8'), env.sandbox);
+  vm.runInContext(fs.readFileSync(CATALOG_FILE, 'utf8'), env.sandbox);
   vm.runInContext(fs.readFileSync(OLED_FILE, 'utf8'), env.sandbox);
   vm.runInContext(fs.readFileSync(KB3D_FILE, 'utf8'), env.sandbox);
+  vm.runInContext(fs.readFileSync(BENTO_FILE, 'utf8'), env.sandbox);
   vm.runInContext(fs.readFileSync(CONSOLE_FILE, 'utf8'), env.sandbox);
   return {
     grain: env.sandbox.PrismPeriodicGrainAssets,
+    audio: env.sandbox.PrismPeriodicAudioFx,
+    catalog: env.sandbox.PrismPeriodicCatalog,
     oled: env.sandbox.PrismPeriodicOledScreen,
     kb3d: env.sandbox.PrismPeriodicKeyboard3D,
+    bento: env.sandbox.PrismPeriodicBentoUI,
     consoleSdk: env.sandbox.PrismPeriodicConsole,
   };
 }
@@ -969,6 +992,7 @@ test('1. Repository-wide de-sensitization audit (ALL files), proprietary copyrig
     ['prism-rim', '-canvas'].join(''),
     ['conv-', 'aura'].join(''),
     ['__ag', 'Prism'].join(''),
+    ['host', '-bridge'].join(''),
   ];
 
   const winDrivePathRe = new RegExp('(?:^|[^A-Za-z0-9_])[A-Za-z]:\\\\(?!s\\*)');
@@ -1066,7 +1090,15 @@ test('1. Repository-wide de-sensitization audit (ALL files), proprietary copyrig
       '|document\\.write|eval\\s*\\(|new\\s+Function)\\b'
   );
 
-  for (const srcName of ['pbr-grain-assets.js', 'oled-cyber-screen.js', 'keyboard-3d-gl.js', 'periodic-console.js']) {
+  for (const srcName of [
+    'pbr-grain-assets.js',
+    'audio-fx.js',
+    'model-catalog.js',
+    'oled-cyber-screen.js',
+    'keyboard-3d-gl.js',
+    'bento-ui.js',
+    'periodic-console.js',
+  ]) {
     const raw = fs.readFileSync(path.join(SRC_DIR, srcName), 'utf8');
     const headSlice = raw.slice(0, 800);
     assert.ok(headSlice.includes('RMvdesi'), `src/${srcName} header must credit RMvdesi`);
@@ -1203,6 +1235,14 @@ test('3. Standalone PrismPeriodicConsole.mount(): fail-closed off mode, triptych
   }
   assert.equal(inst.getStageMode(), 'drawer', 'Typing "f" in input must not flip stageMode to fullscreen');
   assert.equal(inst.isOpen(), true, 'Typing in input must keep console open');
+
+  // Verify console-level setPerformanceMode toggles balanced <-> performance and updates shadowMapSize
+  assert.equal(inst.getPerformanceMode(), 'balanced');
+  assert.equal(inst.setPerformanceMode('performance'), 'performance');
+  assert.equal(inst.getStatus().performanceMode, 'performance');
+  assert.equal(inst.getStatus().shadowMapSize, 512);
+  assert.equal(inst.setPerformanceMode('balanced'), 'balanced');
+  assert.equal(inst.getStatus().shadowMapSize, 1024);
 
   inst.destroy();
   assert.equal(env.document.getElementById('prism-periodic-console-root'), null);
@@ -1475,6 +1515,23 @@ test('6. Dedicated 79 Au raw-quartz standby banners (zero 6C fallback) & 16px ic
   assert.ok(drawn[0].filter.includes('blur(16px)') && drawn[0].filter.includes('saturate(0.08)'));
   assert.ok(drawn[0].dx <= -80 && drawn[0].dy <= -40 && drawn[0].dh >= 560);
 
+  // Verify OLED targetFps frame-pacing API & text truncation LRU stability
+  assert.equal(typeof painter.setTargetFps, 'function', 'OLED painter must expose setTargetFps()');
+  painter.setTargetFps(60);
+  const longDeck = {
+    z: 6,
+    numLabel: '6',
+    symbol: 'C',
+    title: 'Gemini 4 Carbon Super Long Title To Exercise Text Truncation LRU Cache',
+    subtitle: '2026Q4 Architecture Reasoning Preview Subtitle Overflow Probe',
+    isAvailable: true,
+    activeEffort: 'high',
+    levels: [{ effort: 'low' }, { effort: 'medium' }, { effort: 'high' }],
+  };
+  painter.render(longDeck, { id: 'obsidian-dark', isLight: false, isMono: false, reducedMotion: false }, { now: 400 });
+  painter.render(longDeck, { id: 'obsidian-dark', isLight: false, isMono: false, reducedMotion: false }, { now: 405 });
+  painter.setTargetFps(0);
+
   painter.dispose();
   oled.evictIdleOledWallpapers(env.window);
 });
@@ -1516,7 +1573,24 @@ test('7. WebGL2 renderer: strict 5-10-4-5-1 GPU budget, 90+6 raycast pick(), 360
   assert.equal(glStats.created.vaos.size, 4, 'Must cap at 4 VAOs');
   assert.equal(glStats.created.textures.size, 5, 'Must cap at 5 VRAM Textures');
   assert.equal(glStats.created.framebuffers.size, 1, 'Must cap at 1 Shadow FBO');
-  assert.equal(glStats.shadowTexAllocations[0].width, 2048);
+  assert.ok(glStats.uboBindings.length >= 1, 'Must bind FrameGlobals UBO');
+  assert.equal(glStats.shadowTexAllocations[0].width, 1024, 'Balanced mode must allocate 1024px dynamic shadow map');
+  assert.equal(glStats.rgb8TexAllocations[0].width, 64, 'Metal studio environment map must be 64x32 RGB8');
+  assert.equal(glStats.rgb8TexAllocations[0].height, 32, 'Metal studio environment map height must be 32');
+
+  // Verify dynamic performanceMode toggle (1024px -> 512px -> 1024px) & includeKeys:false + deferRender
+  assert.equal(renderer.setPerformanceMode('performance'), 'performance');
+  assert.equal(renderer.getPerfStats().shadowMapSize, 512, 'Performance/Eco mode must downscale shadow map to 512px');
+  assert.equal(renderer.setPerformanceMode('balanced'), 'balanced');
+  assert.equal(renderer.getPerfStats().shadowMapSize, 1024, 'Balanced mode must restore shadow map to 1024px');
+
+  const noKeysRects = renderer.getInteractiveProjectedRects({ includeKeys: false });
+  assert.equal(noKeysRects.keys.length, 0, 'includeKeys:false must skip projecting 90 keys');
+  assert.equal(noKeysRects.auxKeys.length, 0, 'includeKeys:false must skip projecting 6 aux keys');
+
+  renderer.setState({ selectedZ: 6 }, { deferRender: true });
+  assert.ok(env.getCounts().activeRafs >= 1, 'deferRender:true must coalesce via requestAnimationFrame');
+  env.flushRaf();
 
   // Verify projected hit rects & raycast pick()
   const rects = renderer.getInteractiveProjectedRects();
@@ -1543,8 +1617,10 @@ test('7. WebGL2 renderer: strict 5-10-4-5-1 GPU budget, 90+6 raycast pick(), 360
   assert.equal(renderer.isIdle(), true);
   assert.equal(env.getCounts().activeRafs, 0, '0fps idle must leave 0 active requestAnimationFrame callbacks');
 
-  // Verify 100% GPU resource deletion on dispose()
+  // Verify 100% GPU resource deletion on dispose() + legend atlas eviction API
   renderer.dispose();
+  assert.equal(typeof kb3d.evictLegendAtlasCache, 'function');
+  kb3d.evictLegendAtlasCache();
   const glStatsAfter = canvas._gl._stats();
   assert.equal(glStatsAfter.deleted.programs.size, 5);
   assert.equal(glStatsAfter.deleted.shaders.size, 10);
@@ -1741,6 +1817,18 @@ test('9. index.html, bilingual READMEs, whitepapers, LICENSE & CITATION.cff loca
   }
 
   // Curatorial Monograph architecture gates (minimalist header, Atelier Light dimmer, 4 plates, static diptych, collapsed SDK colophon)
+  for (const modName of [
+    './src/pbr-grain-assets.js',
+    './src/audio-fx.js',
+    './src/model-catalog.js',
+    './src/oled-cyber-screen.js',
+    './src/keyboard-3d-gl.js',
+    './src/bento-ui.js',
+    './src/periodic-console.js',
+  ]) {
+    assert.ok(html.includes(`src="${modName}"`), `index.html must load purified module ${modName}`);
+  }
+  assert.ok(html.includes('data-perf-btn="balanced"') && html.includes('data-perf-btn="performance"'), 'Atelier Light must include performance mode toggle buttons');
   assert.ok(html.includes('class="sc-book-header"'), 'Expected minimalist 1px hairline book-header');
   assert.ok(html.includes('id="sc-atelier-dock"'), 'Expected floating Atelier Light optical dimmer disc');
   assert.ok(html.includes('id="plate-concept-silicon"'), 'Expected Plate I Concept & Silicon');

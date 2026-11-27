@@ -1,6 +1,6 @@
 /*!
- * PRISM-118 · Periodic Console — Curatorial Monograph Stylesheet
- * LoveFrom Editorial Serif × Braun / Teenage Engineering Swiss 1px Hairline Grid
+ * PRISM-118 · Periodic Console — Curatorial Monograph Stylesheet (Gestalt v2.0)
+ * Editorial Serif × Unframed Tonal Elevation & Swiss Hairline Rules
  * Copyright (c) 2026 RMvdesi (https://github.com/RMvdesi). All Rights Reserved.
  * Original Design for Obsidian Prism (https://github.com/RMvdesi/obsidian-prism)
  */
@@ -48,100 +48,100 @@
   --sc-font-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
 }
 
-/* Gallery Noir (Default Dark Exhibition Room · Warm Matte Charcoal) */
+/* Gallery Noir (Default Dark Exhibition Room · APCA-W3 Calibrated) */
 :root,
 html[data-prism-theme="dark"][data-prism-palette="obsidian"] {
   --sc-bg: #0a0a0b;
-  --sc-bg-plate: #0f0f11;
-  --sc-bg-panel: #111113;
-  --sc-header-bg: rgba(10, 10, 11, 0.88);
+  --sc-bg-plate: #111114;
+  --sc-bg-panel: #131316;
+  --sc-header-bg: rgba(10, 10, 11, 0.9);
   --sc-spotlight: radial-gradient(64% 58% at 50% 46%, rgba(255, 251, 244, 0.055) 0%, rgba(28, 28, 30, 0.18) 46%, rgba(10, 10, 11, 0) 100%);
-  --sc-ink: #f2efe9;
-  --sc-ink-secondary: #a8a39a;
-  --sc-ink-muted: #706b63;
-  --sc-rule: rgba(242, 239, 233, 0.13);
-  --sc-rule-strong: rgba(242, 239, 233, 0.28);
-  --sc-accent: #f2efe9;
-  --sc-accent-muted: rgba(242, 239, 233, 0.07);
-  --sc-grain-opacity: 0.018;
-  --sc-code-bg: #080809;
-  --sc-code-ink: #dcd8cf;
-  --prism-popover-bg: #111113;
-  --prism-border-2: rgba(242, 239, 233, 0.16);
-  --foreground: #f2efe9;
-  --muted-foreground: #a8a39a;
+  --sc-ink: #f4f1eb;
+  --sc-ink-secondary: #cdc8be;
+  --sc-ink-muted: #beb8ae;
+  --sc-rule: rgba(244, 241, 235, 0.13);
+  --sc-rule-strong: rgba(244, 241, 235, 0.3);
+  --sc-accent: #f4f1eb;
+  --sc-accent-muted: rgba(244, 241, 235, 0.075);
+  --sc-grain-opacity: 0.016;
+  --sc-code-bg: #08080a;
+  --sc-code-ink: #e2ded5;
+  --prism-popover-bg: #131316;
+  --prism-border-2: rgba(244, 241, 235, 0.18);
+  --foreground: #f4f1eb;
+  --muted-foreground: #cdc8be;
 }
 
-/* Bronze Noir (Warm Dark Gallery Room) */
+/* Bronze Noir (Warm Dark Gallery Room · APCA-W3 Calibrated) */
 html[data-prism-theme="dark"][data-prism-palette="warm"] {
   --sc-bg: #0e0c0a;
-  --sc-bg-plate: #14110e;
-  --sc-bg-panel: #161310;
-  --sc-header-bg: rgba(14, 12, 10, 0.88);
+  --sc-bg-plate: #15120f;
+  --sc-bg-panel: #181411;
+  --sc-header-bg: rgba(14, 12, 10, 0.9);
   --sc-spotlight: radial-gradient(64% 58% at 50% 46%, rgba(244, 214, 180, 0.065) 0%, rgba(36, 28, 22, 0.2) 48%, rgba(14, 12, 10, 0) 100%);
-  --sc-ink: #f5ede2;
-  --sc-ink-secondary: #b5a798;
-  --sc-ink-muted: #7d7063;
-  --sc-rule: rgba(245, 237, 226, 0.14);
-  --sc-rule-strong: rgba(245, 237, 226, 0.3);
-  --sc-accent: #e5b887;
-  --sc-accent-muted: rgba(229, 184, 135, 0.09);
-  --sc-grain-opacity: 0.02;
+  --sc-ink: #f6efe4;
+  --sc-ink-secondary: #d4c7b8;
+  --sc-ink-muted: #c4b6a6;
+  --sc-rule: rgba(246, 239, 228, 0.14);
+  --sc-rule-strong: rgba(246, 239, 228, 0.32);
+  --sc-accent: #e8bc8c;
+  --sc-accent-muted: rgba(232, 188, 140, 0.095);
+  --sc-grain-opacity: 0.018;
   --sc-code-bg: #0b0907;
-  --sc-code-ink: #e4d8ca;
-  --prism-popover-bg: #161310;
-  --prism-border-2: rgba(245, 237, 226, 0.18);
-  --foreground: #f5ede2;
-  --muted-foreground: #b5a798;
+  --sc-code-ink: #e8ddd0;
+  --prism-popover-bg: #181411;
+  --prism-border-2: rgba(246, 239, 228, 0.2);
+  --foreground: #f6efe4;
+  --muted-foreground: #d4c7b8;
 }
 
-/* Plaster Light (Swiss Cool Gallery Paper) */
+/* Plaster Light (Swiss Cool Gallery Paper · APCA-W3 Calibrated) */
 html[data-prism-theme="light"][data-prism-light-preset="crystal"] {
   --sc-bg: #f1f3f6;
-  --sc-bg-plate: #e9edf2;
+  --sc-bg-plate: #e7ebf0;
   --sc-bg-panel: #f7f9fb;
-  --sc-header-bg: rgba(241, 243, 246, 0.9);
+  --sc-header-bg: rgba(241, 243, 246, 0.92);
   --sc-spotlight: radial-gradient(64% 58% at 50% 46%, rgba(255, 255, 255, 0.72) 0%, rgba(235, 239, 245, 0.25) 52%, rgba(241, 243, 246, 0) 100%);
   --sc-ink: #12151a;
-  --sc-ink-secondary: #4c5563;
-  --sc-ink-muted: #76808f;
+  --sc-ink-secondary: #394250;
+  --sc-ink-muted: #465060;
   --sc-rule: rgba(18, 21, 26, 0.14);
-  --sc-rule-strong: rgba(18, 21, 26, 0.3);
+  --sc-rule-strong: rgba(18, 21, 26, 0.32);
   --sc-accent: #12151a;
-  --sc-accent-muted: rgba(18, 21, 26, 0.055);
+  --sc-accent-muted: rgba(18, 21, 26, 0.06);
   --sc-grain-opacity: 0.015;
   --sc-code-bg: #e7ebf0;
   --sc-code-ink: #161b22;
   --prism-popover-bg: #f7f9fb;
-  --prism-border-2: rgba(18, 21, 26, 0.16);
+  --prism-border-2: rgba(18, 21, 26, 0.18);
   --foreground: #12151a;
-  --muted-foreground: #4c5563;
+  --muted-foreground: #394250;
 }
 
-/* Paper Monograph (Alabaster Cotton Archival Print · #f6f4ef) */
+/* Paper Monograph (Alabaster Cotton Archival Print · #f6f4ef · APCA-W3 Calibrated) */
 html[data-prism-theme="light"][data-prism-light-preset="alabaster"] {
   --sc-bg: #f6f4ef;
-  --sc-bg-plate: #eeebe4;
+  --sc-bg-plate: #ece8e0;
   --sc-bg-panel: #faf8f4;
-  --sc-header-bg: rgba(246, 244, 239, 0.92);
+  --sc-header-bg: rgba(246, 244, 239, 0.93);
   --sc-spotlight: radial-gradient(64% 58% at 50% 46%, rgba(255, 254, 250, 0.85) 0%, rgba(242, 238, 229, 0.28) 54%, rgba(246, 244, 239, 0) 100%);
   --sc-ink: #141413;
-  --sc-ink-secondary: #534f48;
-  --sc-ink-muted: #7c776e;
+  --sc-ink-secondary: #3e3b35;
+  --sc-ink-muted: #4c4841;
   --sc-rule: rgba(20, 20, 19, 0.15);
-  --sc-rule-strong: rgba(20, 20, 19, 0.32);
+  --sc-rule-strong: rgba(20, 20, 19, 0.34);
   --sc-accent: #141413;
-  --sc-accent-muted: rgba(20, 20, 19, 0.055);
-  --sc-grain-opacity: 0.018;
-  --sc-code-bg: #ede9e0;
+  --sc-accent-muted: rgba(20, 20, 19, 0.06);
+  --sc-grain-opacity: 0.016;
+  --sc-code-bg: #ece8df;
   --sc-code-ink: #1a1917;
   --prism-popover-bg: #faf8f4;
-  --prism-border-2: rgba(20, 20, 19, 0.18);
+  --prism-border-2: rgba(20, 20, 19, 0.2);
   --foreground: #141413;
-  --muted-foreground: #534f48;
+  --muted-foreground: #3e3b35;
 }
 
-/* Optical Rim Accent Overrides (Subtle Curatorial Index Tints Only) */
+/* Optical Rim Accent Overrides */
 html[data-prism-accent="cobalt"] { --sc-accent: #4c86e8; }
 html[data-prism-theme="light"][data-prism-accent="cobalt"] { --sc-accent: #1d4ed8; }
 html[data-prism-accent="iris"] { --sc-accent: #9575f5; }
@@ -160,6 +160,7 @@ html {
   scroll-behavior: smooth;
   background-color: var(--sc-bg);
   color: var(--sc-ink);
+  text-autospace: normal;
 }
 
 body {
@@ -171,13 +172,14 @@ body {
   color: var(--sc-ink);
   font-family: var(--sc-font-body);
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.7;
+  text-autospace: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 260ms ease, color 260ms ease;
 }
 
-/* Subtle 1.5% Archival Film & Paper Micro-Grain (Zero Runtime SVG Filter Overhead) */
+/* Subtle 1.5% Archival Film & Paper Micro-Grain */
 body::before {
   content: "";
   position: fixed;
@@ -201,36 +203,32 @@ button {
 
 button:focus-visible,
 a:focus-visible,
-input:focus-visible {
-  outline: 1px solid var(--sc-ink);
+input:focus-visible,
+#prism-periodic-console-root button:focus-visible,
+#prism-periodic-console-root a:focus-visible {
+  outline: 1.5px solid var(--sc-ink);
   outline-offset: 2px;
 }
 
-/* Shared 10px Tracked-Out Monospace Museum Plaque Typography */
-.sc-plaque-line {
+/* Quiet Editorial Chapter Mark & Metadata Typography (Zero Tracked Uppercase Eyebrow Spam) */
+.sc-chapter-mark {
+  margin: 0;
+  font-family: var(--sc-font-serif);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--sc-ink-muted);
+  line-height: 1.4;
+}
+
+.sc-meta-line {
   margin: 0;
   font-family: var(--sc-font-mono);
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--sc-ink-muted);
-  line-height: 1.45;
-}
-
-.sc-serif-italic {
-  font-family: var(--sc-font-serif);
-  font-style: italic;
-  font-weight: 400;
-}
-
-/* Disable faux oblique skew on CJK ideographs while preserving authentic italic on Latin/numeral phrases */
-html[lang="zh-CN"] .sc-serif-italic {
-  font-style: normal;
-}
-
-html[lang="zh-CN"] .sc-latin-italic {
-  font-style: italic;
+  line-height: 1.55;
 }
 
 .sc-zh-br {
@@ -242,7 +240,7 @@ html[lang="zh-CN"] .sc-zh-br {
 }
 
 /* ============================================================================
- * Minimalist 1px Hairline Book-Header
+ * Minimalist Hairline Book-Header
  * ============================================================================ */
 .sc-book-header {
   position: sticky;
@@ -272,9 +270,8 @@ html[lang="zh-CN"] .sc-zh-br {
   align-items: center;
   gap: 8px;
   font-family: var(--sc-font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
@@ -285,7 +282,6 @@ html[lang="zh-CN"] .sc-zh-br {
 
 .sc-header-slash {
   color: var(--sc-ink-muted);
-  opacity: 0.6;
 }
 
 .sc-header-author {
@@ -302,10 +298,10 @@ html[lang="zh-CN"] .sc-zh-br {
 .sc-lang-switch {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--sc-font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
 }
 
 .sc-lang-btn {
@@ -333,40 +329,10 @@ html[lang="zh-CN"] .sc-zh-br {
 
 .sc-lang-sep {
   color: var(--sc-ink-muted);
-  opacity: 0.45;
-}
-
-.sc-header-divider {
-  width: 1px;
-  height: 14px;
-  background: var(--sc-rule);
-}
-
-.sc-header-flagship {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: var(--sc-font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--sc-ink);
-  padding-bottom: 1px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 180ms ease, color 180ms ease;
-}
-
-.sc-header-flagship:hover {
-  border-bottom-color: var(--sc-ink);
-}
-
-.sc-arrow {
-  font-size: 11px;
-  opacity: 0.7;
 }
 
 /* ============================================================================
- * ACT 00 · PROLOGUE: Spotlight Artifact Stage
+ * PROLOGUE: Spotlight Artifact Stage
  * ============================================================================ */
 .sc-prologue {
   position: relative;
@@ -401,39 +367,35 @@ html[lang="zh-CN"] .sc-zh-br {
 }
 
 .sc-prologue-titleblock {
-  max-width: 820px;
+  max-width: 840px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-}
-
-.sc-prologue-catalogue {
-  color: var(--sc-ink-muted);
+  gap: 14px;
 }
 
 .sc-hero-title {
   margin: 0;
   font-family: var(--sc-font-serif);
-  font-size: clamp(38px, 4.9vw, 68px);
+  font-size: clamp(42px, 5.2vw, 72px);
   font-weight: 400;
-  line-height: 1.06;
-  letter-spacing: -0.015em;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
   color: var(--sc-ink);
 }
 
 html[lang="zh-CN"] .sc-hero-title {
-  font-size: clamp(32px, 3.9vw, 56px);
-  line-height: 1.18;
-  letter-spacing: 0.01em;
+  font-size: clamp(34px, 4.1vw, 58px);
+  line-height: 1.22;
+  letter-spacing: 0.015em;
 }
 
 .sc-hero-subtitle {
   margin: 0;
-  max-width: 640px;
-  font-size: 13.5px;
-  line-height: 1.65;
+  max-width: 660px;
+  font-size: 14px;
+  line-height: 1.72;
   color: var(--sc-ink-secondary);
   font-weight: 400;
   text-wrap: balance;
@@ -468,11 +430,11 @@ html[lang="zh-CN"] .sc-hero-title {
   display: none;
 }
 
-/* Editorial Swiss 1px treatment for narrow/medium compact HUD bar inside the gallery stage */
 .sc-artifact-stage #prism-periodic-console-root[data-stage-mode="drawer"] .pp-compact-bar {
   border-radius: 0;
   background: var(--sc-bg-panel);
-  border: 1px solid var(--sc-rule);
+  border: 0;
+  border-bottom: 1px solid var(--sc-rule);
   box-shadow: none;
 }
 
@@ -492,23 +454,24 @@ html[lang="zh-CN"] .sc-hero-title {
   max-height: calc(100vh - 210px);
 }
 
+/* Tonal Elevation Standby Stage (Zero Resting Placeholder / Zero 1px Box Cage) */
 .sc-stage-standby {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  min-height: 320px;
-  border: 1px solid var(--sc-rule);
+  min-height: 300px;
+  background: var(--sc-bg-plate);
   padding: 40px 24px;
   text-align: center;
 }
 
-.sc-stage-standby[data-visible="1"] {
-  display: flex;
+.sc-stage-standby[hidden] {
+  display: none;
 }
 
-/* Bottom Swiss 1px Museum Plaques Bar */
+/* Bottom Swiss Hairline Specification Bar */
 .sc-museum-plaque-bar {
   position: relative;
   z-index: 2;
@@ -527,9 +490,8 @@ html[lang="zh-CN"] .sc-hero-title {
   padding: 13px 24px;
   border-right: 1px solid var(--sc-rule);
   font-family: var(--sc-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
   min-width: 0;
 }
 
@@ -569,7 +531,7 @@ html[lang="zh-CN"] .sc-hero-title {
 }
 
 /* ============================================================================
- * INTERIOR MONOGRAPH SPREADS (Zero Rounded Cards · Swiss 1px Hairline Rules)
+ * INTERIOR MONOGRAPH SPREADS (Unframed Plates · Tonal Elevation · Swiss Rules)
  * ============================================================================ */
 .sc-monograph {
   width: 100%;
@@ -578,7 +540,7 @@ html[lang="zh-CN"] .sc-hero-title {
 }
 
 .sc-plate-section {
-  padding: clamp(64px, 8vw, 112px) 32px;
+  padding: clamp(72px, 8.5vw, 120px) 32px;
   border-bottom: 1px solid var(--sc-rule);
   scroll-margin-top: 48px;
 }
@@ -607,16 +569,16 @@ html[lang="zh-CN"] .sc-hero-title {
   padding-left: 40px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 52px;
   min-width: 0;
 }
 
 .sc-plate-title {
   margin: 0;
   font-family: var(--sc-font-serif);
-  font-size: clamp(32px, 3.1vw, 46px);
+  font-size: clamp(32px, 3.2vw, 48px);
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--sc-ink);
   text-wrap: balance;
@@ -624,8 +586,8 @@ html[lang="zh-CN"] .sc-hero-title {
 
 html[lang="zh-CN"] .sc-plate-title {
   font-size: clamp(26px, 2.5vw, 38px);
-  line-height: 1.24;
-  letter-spacing: 0.01em;
+  line-height: 1.26;
+  letter-spacing: 0.012em;
 }
 
 .sc-plate-title-wide {
@@ -638,8 +600,8 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 
 .sc-plate-prose {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.78;
   color: var(--sc-ink-secondary);
 }
 
@@ -654,21 +616,21 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 12px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--sc-rule);
 }
 
 .sc-spec-note-row dt {
   font-family: var(--sc-font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.04em;
   color: var(--sc-ink-muted);
 }
 
 .sc-spec-note-row dd {
   margin: 0;
-  font-size: 12.5px;
+  font-size: 13px;
+  line-height: 1.65;
   color: var(--sc-ink);
 }
 
@@ -678,8 +640,8 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   gap: 40px;
   align-items: end;
-  padding-bottom: 32px;
-  margin-bottom: 36px;
+  padding-bottom: 34px;
+  margin-bottom: 40px;
   border-bottom: 1px solid var(--sc-rule);
 }
 
@@ -690,25 +652,24 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-plate-banner-prose {
-  max-width: 520px;
+  max-width: 540px;
   justify-self: end;
 }
 
 /* ============================================================================
- * Unframed Sharp-Edged Gallery Plates & 1:1 Diptych Crosshair
+ * Unframed Gallery Plates (Pure Tonal Elevation · Zero 1px Box Cages)
  * ============================================================================ */
 .sc-plate-fig {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   min-width: 0;
 }
 
 .sc-fig-frame {
   width: 100%;
   background: var(--sc-bg-plate);
-  border: 1px solid var(--sc-rule);
   overflow: hidden;
   border-radius: 0;
 }
@@ -762,11 +723,10 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 
 .sc-fig-plaque {
   font-family: var(--sc-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
   color: var(--sc-ink-muted);
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 .sc-fig-plaque-stack {
@@ -777,8 +737,8 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-fig-note {
-  font-size: 12.5px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.7;
   color: var(--sc-ink-secondary);
 }
 
@@ -834,13 +794,13 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   border-top: 1px solid var(--sc-rule);
   border-left: 1px solid var(--sc-rule);
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
 .sc-spectrum-cell {
   border-right: 1px solid var(--sc-rule);
   border-bottom: 1px solid var(--sc-rule);
-  padding: 16px 18px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -867,12 +827,13 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-spectrum-name {
-  font-size: 12.5px;
+  font-size: 13px;
+  line-height: 1.55;
   color: var(--sc-ink-secondary);
 }
 
 .sc-plate-master {
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
 .sc-plate-master:last-child {
@@ -882,9 +843,9 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 .sc-swiss-two-col {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
-  margin-bottom: 40px;
-  padding: 32px 0;
+  gap: 36px;
+  margin-bottom: 44px;
+  padding: 36px 0;
   border-top: 1px solid var(--sc-rule);
   border-bottom: 1px solid var(--sc-rule);
 }
@@ -897,7 +858,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   border-top: 1px solid var(--sc-rule);
   border-left: 1px solid var(--sc-rule);
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
 .sc-tech-cell {
@@ -906,21 +867,21 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   padding: 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .sc-tech-val {
   font-family: var(--sc-font-serif);
-  font-size: clamp(26px, 2.2vw, 34px);
-  line-height: 1.05;
+  font-size: clamp(24px, 2.05vw, 32px);
+  line-height: 1.1;
   color: var(--sc-ink);
   white-space: nowrap;
 }
 
 .sc-tech-desc {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--sc-ink-secondary);
-  line-height: 1.5;
+  line-height: 1.66;
 }
 
 .sc-acoustic-manual {
@@ -931,7 +892,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-acoustic-diagram {
-  padding: 24px 32px 24px 0;
+  padding: 26px 32px 26px 0;
   border-right: 1px solid var(--sc-rule);
   display: flex;
   flex-direction: column;
@@ -970,7 +931,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 .sc-svg-curve-secondary {
   stroke: var(--sc-ink-secondary);
   stroke-width: 1.15;
-  stroke-opacity: 0.78;
+  stroke-opacity: 0.82;
 }
 
 .sc-svg-curve-dashed {
@@ -986,13 +947,13 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 .sc-svg-ticks text,
 .sc-svg-axis text {
   font-family: var(--sc-font-mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
   fill: var(--sc-ink-muted);
 }
 
 .sc-audition-list {
-  padding: 24px 0 24px 32px;
+  padding: 26px 0 26px 32px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1010,11 +971,11 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   border-bottom: 1px solid var(--sc-rule);
   background: transparent;
   color: var(--sc-ink);
-  padding: 13px 6px;
+  padding: 14px 8px;
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) auto 18px;
+  grid-template-columns: minmax(0, 1fr) auto 18px;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-align: left;
   cursor: pointer;
   transition: background-color 140ms ease, border-color 140ms ease;
@@ -1029,17 +990,17 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   border-bottom-color: var(--sc-ink);
 }
 
-.sc-aud-idx,
 .sc-aud-spec,
 .sc-aud-cue {
   font-family: var(--sc-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  letter-spacing: 0.04em;
   color: var(--sc-ink-muted);
 }
 
 .sc-aud-name {
-  font-size: 13px;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--sc-ink);
 }
 
@@ -1049,7 +1010,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 /* ============================================================================
- * PLATE IV · In-Flow Ergonomics Frameless 1px Cursor-Line Sandbox
+ * PLATE IV · In-Flow Ergonomics Frameless Cursor-Line Sandbox
  * ============================================================================ */
 .sc-badge-specimen {
   margin-top: 8px;
@@ -1063,7 +1024,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-sandbox-status {
-  padding: 16px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--sc-rule);
   display: flex;
   align-items: center;
@@ -1080,19 +1041,20 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   flex-wrap: wrap;
 }
 
+/* Tonal Elevation Status Tag (Zero 1px Box Cage) */
 .sc-plaque-tag {
   font-family: var(--sc-font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border: 1px solid var(--sc-rule-strong);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  background: var(--sc-bg-plate);
   color: var(--sc-ink);
   white-space: nowrap;
 }
 
 .sc-sandbox-msg {
-  font-size: 12.5px;
+  font-size: 13px;
+  line-height: 1.68;
   color: var(--sc-ink-secondary);
 }
 
@@ -1128,17 +1090,17 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   flex: 1 1 auto;
   min-width: 0;
   border: 0;
-  outline: none;
   background: transparent;
   color: var(--sc-ink);
   font-family: var(--sc-font-body);
   font-size: 15px;
-  line-height: 1.5;
-  padding: 4px 0;
+  line-height: 1.65;
+  padding: 4px 2px;
 }
 
 .sc-cursor-input:focus-visible {
-  outline: none;
+  outline: 1.5px solid var(--sc-ink);
+  outline-offset: 4px;
 }
 
 .sc-cursor-input::placeholder {
@@ -1164,14 +1126,14 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 34px;
-  padding: 0 12px;
+  height: 36px;
+  padding: 0 13px;
   border-radius: 0;
   border: 1px solid var(--sc-rule-strong);
   background: transparent;
   color: var(--sc-ink);
   font-family: var(--sc-font-body);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: border-color 160ms ease, background-color 160ms ease;
@@ -1217,11 +1179,10 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-quick-menu-hdr {
-  padding: 9px 12px;
+  padding: 10px 12px;
   font-family: var(--sc-font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.03em;
   color: var(--sc-ink-muted);
   border-bottom: 1px solid var(--sc-rule);
 }
@@ -1240,7 +1201,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   text-align: left;
   width: 100%;
   font-family: var(--sc-font-body);
-  font-size: 12.5px;
+  font-size: 13px;
   padding: 9px 12px;
   cursor: pointer;
   transition: background-color 120ms ease;
@@ -1261,39 +1222,40 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   flex-wrap: wrap;
 }
 
+/* Tonal Elevation Action Controls (Zero 1px Box Cages) */
 .sc-hairline-action {
   appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 7px 12px;
+  padding: 8px 14px;
   border-radius: 0;
-  border: 1px solid var(--sc-rule-strong);
-  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--sc-rule-strong);
+  background: var(--sc-accent-muted);
   color: var(--sc-ink);
   font-family: var(--sc-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
 }
 
 .sc-hairline-action:hover {
-  border-color: var(--sc-ink);
-  background: var(--sc-accent-muted);
+  border-bottom-color: var(--sc-ink);
+  background: var(--sc-bg-plate);
 }
 
-.sc-hairline-action[data-active="1"],
 .sc-hairline-primary {
-  border-color: var(--sc-ink);
+  border-bottom-color: var(--sc-ink);
 }
 
 .sc-hairline-action[data-active="1"] {
   background: var(--sc-ink);
   color: var(--sc-bg);
+  border-bottom-color: var(--sc-ink);
 }
 
 .sc-protocol-strip {
@@ -1303,7 +1265,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-protocol-cell {
-  padding: 16px 16px 16px 0;
+  padding: 18px 18px 18px 0;
   border-right: 1px solid var(--sc-rule);
   display: flex;
   flex-direction: column;
@@ -1311,7 +1273,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-protocol-cell:not(:first-child) {
-  padding-left: 16px;
+  padding-left: 18px;
 }
 
 .sc-protocol-cell:last-child {
@@ -1320,8 +1282,8 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 }
 
 .sc-protocol-note {
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.68;
   color: var(--sc-ink-secondary);
 }
 
@@ -1330,7 +1292,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
  * ============================================================================ */
 .sc-colophon {
   width: 100%;
-  padding: clamp(64px, 7vw, 96px) 32px 64px;
+  padding: clamp(68px, 7.5vw, 104px) 32px 64px;
 }
 
 .sc-colophon-inner {
@@ -1338,7 +1300,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
 .sc-colophon-imprint {
@@ -1354,7 +1316,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
   font-family: var(--sc-font-serif);
   font-size: clamp(22px, 2.3vw, 32px);
   font-weight: 400;
-  line-height: 1.32;
+  line-height: 1.48;
   color: var(--sc-ink);
   max-width: 900px;
   text-wrap: balance;
@@ -1362,6 +1324,7 @@ html[lang="zh-CN"] .sc-plate-title-wide {
 
 html[lang="zh-CN"] .sc-colophon-statement {
   font-size: clamp(18px, 1.85vw, 24px);
+  line-height: 1.68;
   max-width: 960px;
 }
 
@@ -1373,17 +1336,19 @@ html[lang="zh-CN"] .sc-colophon-statement {
 }
 
 .sc-colophon-spec-cell {
-  padding: 16px 18px;
+  padding: 18px 18px;
   text-align: center;
   border-right: 1px solid var(--sc-rule);
   border-bottom: 1px solid var(--sc-rule);
   font-family: var(--sc-font-serif);
-  font-size: 19px;
+  font-size: 18px;
+  line-height: 1.68;
   color: var(--sc-ink);
 }
 
 .sc-sdk-drawer {
-  border: 1px solid var(--sc-rule);
+  border-top: 1px solid var(--sc-rule);
+  border-bottom: 1px solid var(--sc-rule);
 }
 
 .sc-sdk-toggle {
@@ -1392,15 +1357,14 @@ html[lang="zh-CN"] .sc-colophon-statement {
   border: 0;
   background: transparent;
   color: var(--sc-ink);
-  padding: 15px 20px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   font-family: var(--sc-font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
   cursor: pointer;
   transition: background-color 160ms ease;
 }
@@ -1446,7 +1410,7 @@ html[lang="zh-CN"] .sc-colophon-statement {
   background: var(--sc-code-bg);
   color: var(--sc-code-ink);
   font-family: var(--sc-font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   line-height: 1.65;
   overflow-x: auto;
 }
@@ -1460,14 +1424,16 @@ html[lang="zh-CN"] .sc-colophon-statement {
   gap: 16px;
   flex-wrap: wrap;
   font-family: var(--sc-font-mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  letter-spacing: 0.04em;
   color: var(--sc-ink-muted);
 }
 
 .sc-colophon-micro-credit {
   font-size: 9px;
-  opacity: 0.52;
+  letter-spacing: 0.06em;
+  color: var(--sc-ink-muted);
+  opacity: 0.82;
 }
 
 .sc-colophon-links {
@@ -1513,28 +1479,21 @@ html[lang="zh-CN"] .sc-colophon-statement {
   cursor: pointer;
 }
 
-/* Keep collapsed dimmer unobtrusive over interior plates; reveal label on hover/focus/open */
+/* Reveal Atelier label cleanly without leaving opacity:0 resting blocks */
 .sc-atelier-label {
+  display: none;
   font-family: var(--sc-font-serif);
-  font-size: 13.5px;
+  font-size: 14px;
   letter-spacing: 0.02em;
-  color: var(--sc-ink-secondary);
-  background: var(--sc-header-bg);
-  padding: 4px 10px;
-  border: 1px solid var(--sc-rule);
-  opacity: 0;
-  transform: translateX(6px);
-  pointer-events: none;
-  transition: opacity 180ms ease, transform 200ms ease, color 160ms ease, border-color 160ms ease;
+  color: var(--sc-ink);
+  background: var(--sc-bg-panel);
+  padding: 5px 11px;
 }
 
 .sc-atelier-disc:hover .sc-atelier-label,
 .sc-atelier-disc:focus-visible .sc-atelier-label,
 .sc-atelier-dock[data-open="1"] .sc-atelier-label {
-  opacity: 1;
-  transform: translateX(0);
-  color: var(--sc-ink);
-  border-color: var(--sc-rule-strong);
+  display: inline-block;
 }
 
 .sc-aperture-ring {
@@ -1542,27 +1501,27 @@ html[lang="zh-CN"] .sc-colophon-statement {
   height: 40px;
   border-radius: 50%;
   background: var(--sc-bg-panel);
-  border: 1px solid var(--sc-rule-strong);
+  box-shadow: inset 0 0 0 1px var(--sc-rule-strong);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--sc-ink);
-  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease;
 }
 
 .sc-atelier-disc:hover .sc-aperture-ring {
-  border-color: var(--sc-ink);
+  box-shadow: inset 0 0 0 1px var(--sc-ink);
   transform: rotate(22deg);
 }
 
 .sc-atelier-dock[data-open="1"] .sc-aperture-ring {
-  border-color: var(--sc-ink);
+  box-shadow: inset 0 0 0 1px var(--sc-ink);
   transform: rotate(45deg);
 }
 
-/* Expanded Atelier Light Swiss Calibration Drawer (0px Sharp Edges, Scroll-Safe on Short Viewports) */
+/* Expanded Atelier Light Calibration Drawer (Scroll-Safe on Short Viewports) */
 .sc-dimmer-panel {
-  width: 312px;
+  width: 320px;
   max-width: calc(100vw - 24px);
   max-height: calc(100vh - 168px);
   overflow-y: auto;
@@ -1586,7 +1545,7 @@ html[lang="zh-CN"] .sc-colophon-statement {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 11px 14px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--sc-rule);
 }
 
@@ -1620,7 +1579,7 @@ html[lang="zh-CN"] .sc-colophon-statement {
   color: var(--sc-ink-muted);
   font-size: 16px;
   line-height: 1;
-  padding: 2px 4px;
+  padding: 2px 6px;
   cursor: pointer;
 }
 
@@ -1646,37 +1605,36 @@ html[lang="zh-CN"] .sc-colophon-statement {
   gap: 6px;
 }
 
+/* Tonal Elevation Dimmer Buttons (Zero 1px Box Cages) */
 .sc-dimmer-opt,
 .sc-dimmer-accent,
 .sc-dimmer-wide {
   appearance: none;
-  border: 1px solid var(--sc-rule);
+  border: 0;
   border-radius: 0;
-  background: transparent;
+  background: var(--sc-accent-muted);
   color: var(--sc-ink-secondary);
   font-family: var(--sc-font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 7px 9px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 8px 9px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  transition: border-color 140ms ease, color 140ms ease, background-color 140ms ease;
+  transition: color 140ms ease, background-color 140ms ease;
 }
 
 .sc-dimmer-opt:hover,
 .sc-dimmer-accent:hover,
 .sc-dimmer-wide:hover {
-  border-color: var(--sc-ink);
+  background: var(--sc-bg-plate);
   color: var(--sc-ink);
 }
 
 .sc-dimmer-opt[data-active="1"],
 .sc-dimmer-accent[data-active="1"] {
-  border-color: var(--sc-ink);
   background: var(--sc-ink);
   color: var(--sc-bg);
 }
@@ -1688,9 +1646,9 @@ html[lang="zh-CN"] .sc-colophon-statement {
 }
 
 .sc-dimmer-accent {
-  padding: 6px 2px;
-  font-size: 9px;
-  letter-spacing: 0.05em;
+  padding: 7px 2px;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
 }
 
 .sc-dimmer-wide {
@@ -1699,9 +1657,9 @@ html[lang="zh-CN"] .sc-colophon-statement {
 }
 
 .sc-swatch-chip {
-  width: 8px;
-  height: 8px;
-  border: 1px solid currentColor;
+  width: 9px;
+  height: 9px;
+  box-shadow: inset 0 0 0 1px currentColor;
   flex-shrink: 0;
 }
 
@@ -1777,33 +1735,28 @@ html[lang="zh-CN"] .sc-colophon-statement {
   .sc-header-right {
     gap: 10px;
   }
-  .sc-header-flagship {
-    font-size: 9.5px;
-    letter-spacing: 0.1em;
-  }
   .sc-prologue-inner {
     padding: 22px 16px 14px;
     gap: 16px;
   }
   .sc-hero-title {
-    font-size: clamp(30px, 8.6vw, 44px);
+    font-size: clamp(32px, 8.6vw, 46px);
   }
   html[lang="zh-CN"] .sc-hero-title {
     font-size: clamp(26px, 7.2vw, 36px);
   }
   .sc-hero-subtitle {
-    font-size: 12.5px;
+    font-size: 13px;
   }
   .sc-artifact-stage {
     min-height: 280px;
   }
   .sc-plaque-cell {
     padding: 10px 14px;
-    font-size: 9px;
-    letter-spacing: 0.1em;
+    font-size: 10.5px;
   }
   .sc-plate-section {
-    padding: 48px 16px;
+    padding: 52px 16px;
   }
   .sc-diptych-pair {
     grid-template-columns: 1fr;
@@ -1845,7 +1798,7 @@ html[lang="zh-CN"] .sc-colophon-statement {
     border-bottom: 0;
   }
   .sc-colophon {
-    padding: 48px 16px 84px;
+    padding: 52px 16px 84px;
   }
   .sc-colophon-spec-bar {
     grid-template-columns: 1fr;
@@ -1863,7 +1816,7 @@ html[lang="zh-CN"] .sc-colophon-statement {
     bottom: 8px;
   }
   .sc-dimmer-panel {
-    width: min(312px, calc(100vw - 24px));
+    width: min(320px, calc(100vw - 24px));
     max-height: calc(100vh - 108px);
   }
   .sc-aperture-ring {
@@ -1875,6 +1828,18 @@ html[lang="zh-CN"] .sc-colophon-statement {
     height: 30px;
   }
   .sc-atelier-label {
-    display: none;
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
